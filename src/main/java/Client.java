@@ -9,7 +9,7 @@ public class Client {
 
         ZMQ.Context context = ZMQ.context(1);
 
-        //socket to talk to server
+        // socket to talk to server
         ZMQ.Socket requester = context.socket(SocketType.REQ);
         requester.connect("tcp://localhost:5559");
 
@@ -18,7 +18,7 @@ public class Client {
         Scanner input = new Scanner(System.in);
         System.out.println("Client ready");
 
-        //endless loop
+        // endless loop
         while(true) {
             String command = input.nextLine();
             requester.send(command, 0);
@@ -27,7 +27,8 @@ public class Client {
             System.out.println("response: " + response);
         }
 
+        // We never get here but clean up anyhow
         requester.close();
-        context.close();
+        context.term();
     }
 }
