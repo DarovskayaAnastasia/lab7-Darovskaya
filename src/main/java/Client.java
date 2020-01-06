@@ -22,8 +22,11 @@ public class Client {
         while(true) {
             String command = input.nextLine();
             requester.send(command, 0);
+            String response = requester.recvStr();
+
+            System.out.println("response: " + response);
         }
-        
+
         requester.close();
         context.close();
     }
