@@ -13,10 +13,9 @@ public class Client {
         ZMQ.Socket requester = context.socket(SocketType.REQ);
         requester.connect("tcp://localhost:5559");
 
-        System.out.println("Client started...");
+        System.out.println("Launch and connect client...");
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Client ready");
 
         // endless loop
         while(true) {
