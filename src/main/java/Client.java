@@ -17,7 +17,8 @@ public class Client {
 
         //endless loop
         while(true) {
-            
+            String command = input.nextLine();
+            CommandType
         }
     }
 }
