@@ -15,7 +15,9 @@ public class Client {
         Scanner input = new Scanner(System.in);
         System.out.println("Client ready");
 
-        //loop
-        while
+        //endless loop
+        while(true) {
+            
+        }
     }
 }
