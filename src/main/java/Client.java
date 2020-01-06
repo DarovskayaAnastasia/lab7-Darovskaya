@@ -6,12 +6,14 @@ import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args) {
-        System.out.println("Client started...");
-        ZContext context = new ZСontext();
+
+        ZMQ.Context context = ZMQ.context(1);
 
         //socket to talk to server
-        ZMQ.Socket requester = context.createSocket(SocketType.REQ);
+        ZMQ.Socket requester = context.socket(SocketType.REQ);
         requester.connect("tcp://localhost:5559");
+
+        System.out.println("Client started...");
 
         Scanner input = new Scanner(System.in);
         System.out.println("Client ready");
@@ -21,5 +23,8 @@ public class Client {
             String command = input.nextLine();
             requester.send(command, 0);
         }
+        
+        requester.close();
+        context.close();
     }
 }
