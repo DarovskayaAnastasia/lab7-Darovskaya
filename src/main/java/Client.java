@@ -38,12 +38,12 @@ class Command {
     static final String GET_TYPE = "GET";
     static final String SET_TYPE = "SET";
 
-    
+
     String key;
     String value;
 
     public Command(String command) {
-        this.command = command;
+         String[] = command;
     }
 
     public String getCommandType(String command) {
