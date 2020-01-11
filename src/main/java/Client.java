@@ -41,6 +41,6 @@ class Command {
     }
 
     public String getCommandType(String command) {
-        
+
     }
 }
