@@ -86,4 +86,9 @@ class Command {
     public String getValue() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return commandType + " " + key + " " + value;
+    }
 }
