@@ -20,8 +20,14 @@ public class Client {
 
         // endless loop
         while (true) {
-            String command = input.nextLine();
-            requester.send(command, 0);
+            Command command = new Command(input.nextLine());
+
+            if (command.getCommandType().equals(Command.INCORRECT_TYPE)) {
+                System.out.println("incorrect command");
+                break;
+            }
+
+            requester.send(command.toString(), 0);
             String response = requester.recvStr(0);
 
             System.out.println("response: " + response);
