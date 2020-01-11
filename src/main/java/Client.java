@@ -44,7 +44,9 @@ class Command {
 
     public Command(String command) {
          String[] parsedCommand = command.split(" ");
-         String 
+         String keyword = parsedCommand[0];
+
+         
     }
 
     public String getCommandType(String command) {
