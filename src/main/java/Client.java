@@ -47,7 +47,7 @@ class Command {
          String keyword = parsedCommand[0];
 
          if (keyword.equals("SET")) {
-             if (parsedCommand.length == 3 && isInteger(parsedCommand[1]))
+             if (parsedCommand.length == 3 && )
          }
     }
 
