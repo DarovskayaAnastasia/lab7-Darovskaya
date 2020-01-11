@@ -24,7 +24,10 @@ public class Client {
 
             if (command.getCommandType().equals(Command.INCORRECT_TYPE)) {
                 System.out.println("incorrect command");
-                break;
+                continue;
+            }
+            else if (command.getCommandType().equals(Command.SET_TYPE)) {
+                System.out.println("SET command");
             }
 
             requester.send(command.toString(), 0);
