@@ -43,6 +43,12 @@ class Command {
     private int key;
     private String value;
 
+    public Command(String commandType, int key, String value) {
+        this.commandType = commandType;
+        this.key = key;
+        this.value = value;
+    }
+
     public Command(String command) {
         String[] parsedCommand = command.split(" ");
         String keyword = parsedCommand[0];
