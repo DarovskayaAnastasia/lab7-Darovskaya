@@ -3,6 +3,7 @@ import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Client {
     public static void main(String[] args) {
@@ -47,7 +48,14 @@ class Command {
          String keyword = parsedCommand[0];
 
          if (keyword.equals("SET")) {
-             if (parsedCommand.length == 3 && )
+             if (parsedCommand.length == 3 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find()) {
+                 commandType = GET_TYPE;
+                 key = parsedCommand[1];
+                 value = parsedCommand[2];
+             }
+         }
+         if (keyword.equals("GET")) {
+             if (parsedCommand.length == 2 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find())
          }
     }
 
