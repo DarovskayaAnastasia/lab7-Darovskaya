@@ -53,8 +53,7 @@ class Command {
                 key = Integer.parseInt(parsedCommand[1]);
                 value = parsedCommand[2];
             }
-        }
-        if (keyword.equals("GET")) {
+        } else if (keyword.equals("GET")) {
             if (parsedCommand.length == 2 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find()) {
                 commandType = GET_TYPE;
                 key = Integer.parseInt(parsedCommand[1]);
@@ -64,7 +63,7 @@ class Command {
         }
     }
 
-    public String getCommandType(String command) {
-        if (command ==
+    public String getCommandType() {
+        return commandType;
     }
 }
