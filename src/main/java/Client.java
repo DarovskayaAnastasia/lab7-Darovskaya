@@ -33,12 +33,12 @@ public class Client {
 }
 
 class Command {
-    static final String ;
-    static final String ;
-    static final String ;
+    static final String INCORRECT_TYPE = "INCORRECT";
+    static final String NOTIFY_TYPE = "NOTIFY";
+    static final String GET_TYPE = "GET";
+    static final String SET_TYPE = "SET";
 
     
-    String commandType;
     String key;
     String value;
 
