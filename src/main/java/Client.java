@@ -21,7 +21,7 @@ public class Client {
         while(true) {
             String command = input.nextLine();
             requester.send(command, 0);
-            String response = requester.recvStr();
+            String response = requester.recvStr(0);
 
             System.out.println("response: " + response);
         }
@@ -29,5 +29,18 @@ public class Client {
         // We never get here but clean up anyhow
         requester.close();
         context.term();
+    }
+}
+
+class Command {
+    String command;
+    String type;
+
+    public Command(String command) {
+        this.command = command;
+    }
+
+    public String getCommandType(String command) {
+        
     }
 }
