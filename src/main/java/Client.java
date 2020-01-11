@@ -38,15 +38,17 @@ class Command {
     static final String GET_TYPE = "GET";
     static final String SET_TYPE = "SET";
 
-
-    String key;
-    String value;
+    private String commandType;
+    private String key;
+    private String value;
 
     public Command(String command) {
          String[] parsedCommand = command.split(" ");
          String keyword = parsedCommand[0];
 
-         
+         if (keyword.equals("SET")) {
+             if (parsedCommand.length == 3 && isInteger(parsedCommand[1]))
+         }
     }
 
     public String getCommandType(String command) {
