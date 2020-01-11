@@ -72,4 +72,12 @@ class Command {
     public String getCommandType() {
         return commandType;
     }
+
+    public int getKey() {
+        return key;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }
