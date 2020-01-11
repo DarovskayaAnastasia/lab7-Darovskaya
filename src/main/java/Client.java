@@ -33,14 +33,20 @@ public class Client {
 }
 
 class Command {
-    String command;
-    String type;
+    static final String ;
+    static final String ;
+    static final String ;
+
+    
+    String commandType;
+    String key;
+    String value;
 
     public Command(String command) {
         this.command = command;
     }
 
     public String getCommandType(String command) {
-        if (command == 
+        if (command ==
     }
 }
