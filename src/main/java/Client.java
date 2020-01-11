@@ -19,7 +19,7 @@ public class Client {
         Scanner input = new Scanner(System.in);
 
         // endless loop
-        while(true) {
+        while (true) {
             String command = input.nextLine();
             requester.send(command, 0);
             String response = requester.recvStr(0);
@@ -40,23 +40,28 @@ class Command {
     static final String SET_TYPE = "SET";
 
     private String commandType;
-    private String key;
+    private int key;
     private String value;
 
     public Command(String command) {
-         String[] parsedCommand = command.split(" ");
-         String keyword = parsedCommand[0];
+        String[] parsedCommand = command.split(" ");
+        String keyword = parsedCommand[0];
 
-         if (keyword.equals("SET")) {
-             if (parsedCommand.length == 3 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find()) {
-                 commandType = GET_TYPE;
-                 key = parsedCommand[1];
-                 value = parsedCommand[2];
-             }
-         }
-         if (keyword.equals("GET")) {
-             if (parsedCommand.length == 2 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find())
-         }
+        if (keyword.equals("SET")) {
+            if (parsedCommand.length == 3 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find()) {
+                commandType = SET_TYPE;
+                key = Integer.parseInt(parsedCommand[1]);
+                value = parsedCommand[2];
+            }
+        }
+        if (keyword.equals("GET")) {
+            if (parsedCommand.length == 2 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find()) {
+                commandType = GET_TYPE;
+                key = Integer.parseInt(parsedCommand[1]);
+            }
+        } else {
+            commandType = INCORRECT_TYPE;
+        }
     }
 
     public String getCommandType(String command) {
