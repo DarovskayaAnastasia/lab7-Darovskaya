@@ -54,7 +54,7 @@ public class ProxyServer {
                 if (command.getCommandType().equals(Command.NOTIFY_TYPE)) {
 
                 }
-                else if (!command.getCommandType().equals("QUIT")) {
+                else if (!command.getCommandType().equals(Command.INCORRECT_TYPE)) {
 
                 }
             }
