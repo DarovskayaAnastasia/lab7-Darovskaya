@@ -1,6 +1,4 @@
-import org.zeromq.SocketType;
-import org.zeromq.ZContext;
-import org.zeromq.ZMQ;
+import org.zeromq.*;
 import zmq.poll.Poller;
 
 public class ProxyServer {
@@ -12,11 +10,11 @@ public class ProxyServer {
         ZContext context = new ZСontext();
 
         // Socket facing clients
-        Socket frontend = context.createSocket(SocketType.ROUTER);
+        ZMQ.Socket frontend = context.createSocket(SocketType.ROUTER);
         frontend.bind("tcp://localhost:5559");
 
         //Socket facing services
-        ZMQ.Socket backend = context.socket(SocketType.ROUTER);
+        ZMQ.Socket backend = context.createSocket(SocketType.ROUTER);
         backend.bind("tcp:/localhost:5560");
 
         System.out.println("(ProxyServer message): Proxy has been started");
