@@ -19,8 +19,10 @@ public class ProxyServer {
 
         System.out.println("(ProxyServer message): Proxy has been started");
 
-        // Start the proxy
-        ZMQ.proxy(frontend, backend, null);
+//        // Start the proxy
+//        ZMQ.proxy(frontend, backend, null);
+
+        ZMQ.Poller poller = context.createPoller(2);
 
         // We never get here but clean up anyhow
         frontend.close();
