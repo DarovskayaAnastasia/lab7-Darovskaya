@@ -1,3 +1,4 @@
+import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 
 public class DistCacheStorage {
@@ -9,6 +10,7 @@ public class DistCacheStorage {
         }
 
         ZMQ.Context context = ZMQ.context(0);
-        
+        ZMQ.Socket socket = context.socket(SocketType.DEALER);
+        socket.connect("tcp://localhost:5556");
     }
 }
