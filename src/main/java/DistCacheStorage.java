@@ -4,6 +4,9 @@ import org.zeromq.ZMsg;
 
 public class DistCacheStorage {
 
+    private static int start;
+    private static int end;
+
     public static void main(String[] args) {
         if (args.length < 2) {
             System.err.println("(DistCacheStorage message): ERROR, incorrect number of arguments");
