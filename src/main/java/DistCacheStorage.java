@@ -23,7 +23,7 @@ public class DistCacheStorage {
                 // send heartbeat
             }
 
-            ZMsg message = ZMsg.recvMsg(socket, )
+            ZMsg message = ZMsg.recvMsg(socket, false);
         }
     }
 }
