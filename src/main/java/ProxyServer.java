@@ -27,7 +27,7 @@ public class ProxyServer {
 //        Endless loop
         while (!Thread.currentThread().isInterrupted()) {
             poller.poll();
-//            remove storages
+//            remove idle storages
 
         }
 
