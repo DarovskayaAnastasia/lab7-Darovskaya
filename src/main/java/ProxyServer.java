@@ -36,10 +36,27 @@ public class ProxyServer {
                 ZMsg message = ZMsg.recvMsg(frontend);
 
                 Command command = new Command(message.getLast().toString());
+
+                if (command.getCommandType().equals(Command.GET_TYPE)) {
+
+                }
+
+                if (command.getCommandType().equals(Command.SET_TYPE)) {
+
+                }
             }
 
             if (poller.pollin(BACKEND_INDEX)) {
+                ZMsg message = ZMsg.recvMsg(frontend);
 
+                Command command = new Command(message.getLast().toString());
+
+                if (command.getCommandType().equals(Command.NOTIFY_TYPE)) {
+
+                }
+                else if (!command.getCommandType().equals("QUIT")) {
+
+                }
             }
 
         }
