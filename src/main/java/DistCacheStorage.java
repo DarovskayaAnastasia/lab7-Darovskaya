@@ -42,7 +42,7 @@ public class DistCacheStorage {
             socket.send(, 0));
         }
 
-        context.destroySocket(socket);
-        context.destroy();
+        context.close();
+        context.term();
     }
 }
