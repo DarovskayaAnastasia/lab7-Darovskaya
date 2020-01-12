@@ -9,10 +9,10 @@ public class ProxyServer {
     public static void main(String[] args) {
         System.out.println("(ProxyServer message): Launch Proxy...");
 
-        ZContext context = ZСontext(1);
+        ZContext context = new ZСontext();
 
         // Socket facing clients
-        ZMQ.Socket frontend = context.socket(SocketType.ROUTER);
+        Socket frontend = context.createSocket(SocketType.ROUTER);
         frontend.bind("tcp://localhost:5559");
 
         //Socket facing services
