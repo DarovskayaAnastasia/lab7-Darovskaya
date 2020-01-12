@@ -39,7 +39,7 @@ public class DistCacheStorage {
 
             if ( //heartbeat checkout
             // ) {
-            
+            socket.send(, 0));
         }
 
         context.destroySocket(socket);
