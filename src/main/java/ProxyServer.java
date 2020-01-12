@@ -5,7 +5,7 @@ public class ProxyServer {
 
 
     public static void main(String[] args) {
-        System.out.println("Launch Proxy...");
+        System.out.println("(ProxyServer message): Launch Proxy...");
 
         ZMQ.Context context = ZMQ.context(1);
 
@@ -17,7 +17,7 @@ public class ProxyServer {
         ZMQ.Socket backend = context.socket(SocketType.ROUTER);
         backend.bind("tcp:/localhost:5560");
 
-        System.out.println("Proxy has been started");
+        System.out.println("(ProxyServer message): Proxy has been started");
 
         // Start the proxy
         ZMQ.proxy(frontend, backend, null);

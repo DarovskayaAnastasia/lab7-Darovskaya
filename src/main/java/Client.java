@@ -13,7 +13,7 @@ public class Client {
         ZMQ.Socket requester = context.socket(SocketType.REQ);
         requester.connect("tcp://localhost:5559");
 
-        System.out.println("Launch and connect client...");
+        System.out.println("(Client message): Launch and connect client...");
         System.out.println("--- Enter QUIT for exit");
 
         Scanner input = new Scanner(System.in);
@@ -23,15 +23,15 @@ public class Client {
             Command command = new Command(input.nextLine());
 
             if (command.getCommandType().equals(Command.INCORRECT_TYPE)) {
-                System.out.println("incorrect command");
+                System.out.println("(Client message): incorrect command");
 
             } else if (command.getCommandType().equals(Command.SET_TYPE)) {
-                System.out.println(command.getCommandType() + " command accepted for processing");
+                System.out.println("(Client message): " + command.getCommandType() + " command accepted for processing");
 
                 requester.send(command.toString(), 0);
                 String response = requester.recvStr(0);
 
-                System.out.println("response: " + response);
+                System.out.println("(Client message): response: " + response);
 
             } else {
                 System.out.println("--- QUIT");
