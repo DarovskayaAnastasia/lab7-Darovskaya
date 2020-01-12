@@ -1,12 +1,13 @@
 import org.zeromq.*;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ProxyServer {
     private static final int FRONTEND_INDEX = 0;
     private static final int BACKEND_INDEX = 1;
 
-    private static final Map<Integer, StorageInfo> storages = new HashMap<>();
+    private static final Map<String, StorageInfo> storages = new HashMap<>();
 
     public static void main(String[] args) {
         System.out.println("(ProxyServer message): Launch Proxy...");
