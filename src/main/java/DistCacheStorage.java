@@ -32,12 +32,13 @@ public class DistCacheStorage {
                 System.out.println("(DistCacheStorage message): command type is " + command.getCommandType());
 
                 if (command.getCommandType().equals(Command.GET_TYPE)) {
-
+                    String value = .get(keu);
                 }
                 if (command.getCommandType().equals(Command.SET_TYPE)) {
 
                 }
             }
+        }
 
         context.close();
         context.term();
