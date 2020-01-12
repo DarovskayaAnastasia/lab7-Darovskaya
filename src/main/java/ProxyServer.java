@@ -42,7 +42,6 @@ public class ProxyServer {
 
         }
 
-
 //        We never get here but clean up anyhow
         frontend.close();
         backend.close();
