@@ -17,8 +17,8 @@ public class ProxyServer {
         ZMQ.Socket backend = context.socket(SocketType.ROUTER);
         backend.bind("tcp:/localhost:5560");
 
-        System.out.println("Proxy was sta");
-        
+        System.out.println("Proxy has been started");
+
         // Start the proxy
         ZMQ.proxy(frontend, backend, null);
 
