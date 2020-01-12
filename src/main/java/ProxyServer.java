@@ -1,5 +1,7 @@
 import org.zeromq.SocketType;
+import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
+import zmq.poll.Poller;
 
 public class ProxyServer {
 
@@ -7,7 +9,7 @@ public class ProxyServer {
     public static void main(String[] args) {
         System.out.println("(ProxyServer message): Launch Proxy...");
 
-        ZMQ.Context context = ZMQ.context(1);
+        ZContext context = ZСontext(1);
 
         // Socket facing clients
         ZMQ.Socket frontend = context.socket(SocketType.ROUTER);
@@ -22,7 +24,7 @@ public class ProxyServer {
 //        // Start the proxy
 //        ZMQ.proxy(frontend, backend, null);
 
-        ZMQ.Poller poller = context.createPoller(2);
+        Poller poller = context.createPoller(2);
 
         // We never get here but clean up anyhow
         frontend.close();
