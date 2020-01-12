@@ -2,17 +2,17 @@ import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 
 public class ProxyServer {
-    
+
 
     public static void main(String[] args) {
         ZMQ.Context context = ZMQ.context(1);
 
         // Socket facing clients
-        ZMQ.Socket frontend = context.socket(SocketType.XSUB);
+        ZMQ.Socket frontend = context.socket(SocketType.ROUTER);
         frontend.bind("tcp://*:5559");
 
         //Socket facing services
-        ZMQ.Socket backend = context.socket(SocketType.XPUB);
+        ZMQ.Socket backend = context.socket(SocketType.ROUTER);
         backend.bind("tcp://*:5560");
 
         // Start the proxy
