@@ -2,10 +2,14 @@ import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 import org.zeromq.ZMsg;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DistCacheStorage {
 
     private static int start;
     private static int end;
+    private static Map<Integer, String> storage = new HashMap<>();
 
     public static void main(String[] args) {
         if (args.length < 2) {
@@ -32,7 +36,7 @@ public class DistCacheStorage {
                 System.out.println("(DistCacheStorage message): command type is " + command.getCommandType());
 
                 if (command.getCommandType().equals(Command.GET_TYPE)) {
-                    String value = .get(keu);
+                    String value = storage.get(key);
                 }
                 if (command.getCommandType().equals(Command.SET_TYPE)) {
 
