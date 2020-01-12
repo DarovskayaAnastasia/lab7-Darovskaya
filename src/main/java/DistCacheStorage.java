@@ -36,6 +36,10 @@ public class DistCacheStorage {
 
                 }
             }
+
+            if ( //heartbeat checkout
+            // ) {
+            //send heartbeat
         }
     }
 }
