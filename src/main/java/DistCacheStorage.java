@@ -25,7 +25,17 @@ public class DistCacheStorage {
 
             ZMsg message = ZMsg.recvMsg(socket, false);
 
-            
+            if (message != null) {
+                Command command = new Command((message.getLast().toString()));
+                System.out.println("(DistCacheStorage message): command type is " + command.getCommandType());
+
+                if (command.getCommandType().equals(Command.GET_TYPE)) {
+
+                }
+                if (command.getCommandType().equals(Command.SET_TYPE)) {
+
+                }
+            }
         }
     }
 }
