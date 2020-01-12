@@ -1,5 +1,6 @@
 import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
+import org.zeromq.ZMsg;
 
 public class DistCacheStorage {
 
@@ -12,5 +13,17 @@ public class DistCacheStorage {
         ZMQ.Context context = ZMQ.context(0);
         ZMQ.Socket socket = context.socket(SocketType.DEALER);
         socket.connect("tcp://localhost:5556");
+
+        System.out.println("(DistCacheStorage message): Storage has been started...");
+
+//        endless loop
+        while (!Thread.currentThread().isInterrupted()) {
+            if ( // heartbeat checkout
+            ) {
+                // send heartbeat
+            }
+
+            ZMsg message = ZMsg.recvMsg(socket, )
+        }
     }
 }
