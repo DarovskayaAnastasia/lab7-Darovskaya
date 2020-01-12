@@ -1,6 +1,8 @@
 import org.zeromq.*;
 
 public class ProxyServer {
+    private static final int FRONTEND_INDEX = 1;
+    private static final int BACKEND_INDEX = 1;
 
 
     public static void main(String[] args) {
@@ -27,7 +29,16 @@ public class ProxyServer {
 //        Endless loop
         while (!Thread.currentThread().isInterrupted()) {
             poller.poll();
-//            remove idle storages
+
+//          here we'll remove idle storages
+
+            if (poller.pollin(FRONTEND_INDEX)) {
+
+            }
+
+            if (poller.pollin(BACKEND_INDEX)) {
+                
+            }
 
         }
 
