@@ -33,7 +33,9 @@ public class ProxyServer {
 //          here we'll remove idle storages
 
             if (poller.pollin(FRONTEND_INDEX)) {
-                ZMsg
+                ZMsg message = ZMsg.recvMsg(frontend);
+
+                Command command = new Command(message.getLast().toString());
             }
 
             if (poller.pollin(BACKEND_INDEX)) {
