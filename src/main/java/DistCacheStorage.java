@@ -36,10 +36,14 @@ public class DistCacheStorage {
                 System.out.println("(DistCacheStorage message): command type is " + command.getCommandType());
 
                 if (command.getCommandType().equals(Command.GET_TYPE)) {
-                    String value = storage.get(key);
-                }
-                if (command.getCommandType().equals(Command.SET_TYPE)) {
+                    String value = storage.get(command.getKey());
 
+                    message.getLast().reset("RESPONSE");
+                    message.send(socket);
+                }
+
+                if (command.getCommandType().equals(Command.SET_TYPE)) {
+                    
                 }
             }
         }
