@@ -1,5 +1,4 @@
 import org.zeromq.SocketType;
-import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 
 import java.util.Scanner;
@@ -15,6 +14,7 @@ public class Client {
         requester.connect("tcp://localhost:5559");
 
         System.out.println("Launch and connect client...");
+        System.out.println("--- Enter QUIT for exit");
 
         Scanner input = new Scanner(System.in);
 
@@ -25,15 +25,17 @@ public class Client {
             if (command.getCommandType().equals(Command.INCORRECT_TYPE)) {
                 System.out.println("incorrect command");
                 continue;
-            }
-            else if (command.getCommandType().equals(Command.SET_TYPE)) {
-                System.out.println("SET command");
-            }
+            } else if (command.getCommandType().equals(Command.SET_TYPE)) {
+                System.out.println(command.getCommandType() + " command accepted for processing");
 
-            requester.send(command.toString(), 0);
-            String response = requester.recvStr(0);
+                requester.send(command.toString(), 0);
+                String response = requester.recvStr(0);
 
-            System.out.println("response: " + response);
+                System.out.println("response: " + response);
+            } else {
+                System.out.println("--- QUIT");
+                break;
+            }
         }
 
         // We never get here but clean up anyhow
@@ -73,7 +75,7 @@ class Command {
                 commandType = GET_TYPE;
                 key = Integer.parseInt(parsedCommand[1]);
             }
-        } else {
+        } else if (!keyword.equals("QUIT")) {
             commandType = INCORRECT_TYPE;
         }
     }
