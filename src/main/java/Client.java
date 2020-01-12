@@ -24,7 +24,7 @@ public class Client {
 
             if (command.getCommandType().equals(Command.INCORRECT_TYPE)) {
                 System.out.println("incorrect command");
-                continue;
+
             } else if (command.getCommandType().equals(Command.SET_TYPE)) {
                 System.out.println(command.getCommandType() + " command accepted for processing");
 
@@ -32,6 +32,7 @@ public class Client {
                 String response = requester.recvStr(0);
 
                 System.out.println("response: " + response);
+
             } else {
                 System.out.println("--- QUIT");
                 break;
