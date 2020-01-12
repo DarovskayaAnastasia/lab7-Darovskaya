@@ -1,7 +1,7 @@
 import org.zeromq.*;
 
 public class ProxyServer {
-    private static final int FRONTEND_INDEX = 1;
+    private static final int FRONTEND_INDEX = 0;
     private static final int BACKEND_INDEX = 1;
 
 
@@ -37,7 +37,7 @@ public class ProxyServer {
             }
 
             if (poller.pollin(BACKEND_INDEX)) {
-                
+
             }
 
         }
