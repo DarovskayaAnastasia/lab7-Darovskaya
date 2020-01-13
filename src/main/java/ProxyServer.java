@@ -1,6 +1,8 @@
 import org.zeromq.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ProxyServer {
@@ -10,7 +12,8 @@ public class ProxyServer {
     private static ZMQ.Socket frontend;
     private static ZMQ.Socket backend;
 
-    private static final Map<String, StorageInfo> storages = new HashMap<>();
+//    private static final Map<String, StorageInfo> storages = new HashMap<>();
+    private static final List<StorageInfo> storages = new ArrayList<>();
 
     private static boolean GetRequest(Command command, ZMsg message) {
         int key = command.getKey();
