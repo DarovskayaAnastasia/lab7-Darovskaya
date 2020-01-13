@@ -49,7 +49,12 @@ public class ProxyServer {
                     int key = command.getKey();
 
                     for (Map.Entry<String, StorageInfo> record : storages.entrySet()) {
+                        StorageInfo info = record.getValue();
 
+                        if (info.getStart() <= key && key <= info.getEnd()) {
+                            record.getKey().send(, ZFrame.REUSE + ZFrame.MORE);
+                            message.send(, )
+                        }
                     }
                 }
 
@@ -65,8 +70,7 @@ public class ProxyServer {
 
                 if (command.getCommandType().equals(Command.NOTIFY_TYPE)) {
 
-                }
-                else if (!command.getCommandType().equals(Command.INCORRECT_TYPE)) {
+                } else if (!command.getCommandType().equals(Command.INCORRECT_TYPE)) {
 
                 }
             }
