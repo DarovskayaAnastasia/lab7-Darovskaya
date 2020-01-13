@@ -66,7 +66,7 @@ public class ProxyServer {
 
                 if (command.getCommandType().equals(Command.GET_TYPE)) {
                     if (!sendRequest(command, message)) {
-                        message.getLast().reset("");
+                        message.getLast().reset("(ProxyServer message): ERROR - Out of bounds cache");
                     }
                 }
 
