@@ -42,6 +42,7 @@ public class ProxyServer {
                 Command command = new Command(message.getLast().toString());
 
                 if (command.getCommandType().equals(Command.GET_TYPE)) {
+                    Integer key 
 
                 }
 
