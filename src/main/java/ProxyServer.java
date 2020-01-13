@@ -70,6 +70,8 @@ public class ProxyServer {
                         message.send(frontend);
                     }
                     else if (command.getCommandType().equals(Command.SET_TYPE)) {
+                        ZMsg responseMessage = new ZMsg();
+                        responseMessage.add(new ZFrame("DATA "))
                         System.out.println("(ProxyServer message): SET is done");
                     }
                 }
