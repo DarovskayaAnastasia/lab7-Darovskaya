@@ -48,7 +48,7 @@ public class ProxyServer {
                 if (command.getCommandType().equals(Command.GET_TYPE)) {
                     int key = command.getKey();
 
-                    for (Map.Entry<String, StorageInfo> a : storages.entrySet()) {
+                    for (Map.Entry<String, StorageInfo> record : storages.entrySet()) {
 
                     }
                 }
