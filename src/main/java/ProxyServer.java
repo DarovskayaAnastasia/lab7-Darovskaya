@@ -18,15 +18,17 @@ public class ProxyServer {
     private static boolean GetRequest(Command command, ZMsg message) {
         int key = command.getKey();
 
-        for (Map.Entry<String, StorageInfo> record : storages.entrySet()) {
-            StorageInfo info = record.getValue();
+//        for (Map.Entry<String, StorageInfo> record : storages.entrySet()) {
+//            StorageInfo info = record.getValue();
+        for (StorageInfo info : storages) {
 
             if (info.getStart() <= key && key <= info.getEnd()) {
-                record.getKey().send(backend, ZFrame.REUSE + ZFrame.MORE);
+                info.getAddress().send(backend, ZFrame.REUSE + ZFrame.MORE);
                 message.send(backend, false);
-                break;
+                return true;
             }
         }
+        
         return false;
     }
 
