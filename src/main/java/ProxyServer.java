@@ -64,14 +64,14 @@ public class ProxyServer {
 
                 Command command = new Command(message.getLast().toString());
 
-                if (command.getCommandType().equals(Command.GET_TYPE)) {
+                if (command.getCommandType().equals(Command.GET_TYPE) || command.getCommandType().equals(Command.SET_TYPE)) {
                     if (!sendRequest(command, message)) {
                         message.getLast().reset("(ProxyServer message): ERROR - Out of bounds cache");
+                        message.send(frontend);
                     }
-                }
-
-                if (command.getCommandType().equals(Command.SET_TYPE)) {
-
+                    else if (command.getCommandType().equals(Command.SET_TYPE)) {
+                        System.out.println("(ProxyServer message): SET is done");
+                    }
                 }
             }
 
