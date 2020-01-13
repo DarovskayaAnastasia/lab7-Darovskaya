@@ -48,8 +48,8 @@ public class Client {
 class Command {
     static final String INCORRECT_TYPE = "INCORRECT";
     static final String NOTIFY_TYPE = "NOTIFY";
-    static final String GET_TYPE = "GET";
     static final String SET_TYPE = "SET";
+    static final String GET_TYPE = "GET";
 
     private String commandType;
     private int key;
