@@ -43,7 +43,7 @@ public class ProxyServer {
 
                 if (command.getCommandType().equals(Command.GET_TYPE)) {
                     int key = command.getKey();
-                    
+
 
                 }
 
