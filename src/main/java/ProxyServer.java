@@ -9,6 +9,10 @@ public class ProxyServer {
 
     private static final Map<String, StorageInfo> storages = new HashMap<>();
 
+    private static boolean GetRequest() {
+        return false;
+    }
+
     public static void main(String[] args) {
         System.out.println("(ProxyServer message): Launch Proxy...");
 
@@ -44,7 +48,9 @@ public class ProxyServer {
                 if (command.getCommandType().equals(Command.GET_TYPE)) {
                     int key = command.getKey();
 
+                    for (Map.Entry<String, StorageInfo> a : storages.entrySet()) {
 
+                    }
                 }
 
                 if (command.getCommandType().equals(Command.SET_TYPE)) {
