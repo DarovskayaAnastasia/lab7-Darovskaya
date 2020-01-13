@@ -53,7 +53,7 @@ public class ProxyServer {
 
                         if (info.getStart() <= key && key <= info.getEnd()) {
                             record.getKey().send(, ZFrame.REUSE + ZFrame.MORE);
-                            message.send(, )
+                            message.send(, false);
                         }
                     }
                 }
