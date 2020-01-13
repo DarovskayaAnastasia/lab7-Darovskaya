@@ -7,9 +7,23 @@ public class ProxyServer {
     private static final int FRONTEND_INDEX = 0;
     private static final int BACKEND_INDEX = 1;
 
+    private static ZMQ.Socket frontend;
+    private static ZMQ.Socket backend;
+
     private static final Map<String, StorageInfo> storages = new HashMap<>();
 
-    private static boolean GetRequest() {
+    private static boolean GetRequest(Command command, ZMsg message) {
+        int key = command.getKey();
+
+        for (Map.Entry<String, StorageInfo> record : storages.entrySet()) {
+            StorageInfo info = record.getValue();
+
+            if (info.getStart() <= key && key <= info.getEnd()) {
+                record.getKey().send(backend, ZFrame.REUSE + ZFrame.MORE);
+                message.send(backend, false);
+                break;
+            }
+        }
         return false;
     }
 
@@ -19,11 +33,11 @@ public class ProxyServer {
         ZMQ.Context context = ZMQ.context(0);
 
 //        Socket facing clients
-        ZMQ.Socket frontend = context.socket(SocketType.ROUTER);
+        frontend = context.socket(SocketType.ROUTER);
         frontend.bind("tcp://localhost:5559");
 
 //        Socket facing services
-        ZMQ.Socket backend = context.socket(SocketType.ROUTER);
+        backend = context.socket(SocketType.ROUTER);
         backend.bind("tcp:/localhost:5560");
 
 //        ZMQ.proxy(frontend, backend, null);
@@ -46,16 +60,7 @@ public class ProxyServer {
                 Command command = new Command(message.getLast().toString());
 
                 if (command.getCommandType().equals(Command.GET_TYPE)) {
-                    int key = command.getKey();
 
-                    for (Map.Entry<String, StorageInfo> record : storages.entrySet()) {
-                        StorageInfo info = record.getValue();
-
-                        if (info.getStart() <= key && key <= info.getEnd()) {
-                            record.getKey().send(, ZFrame.REUSE + ZFrame.MORE);
-                            message.send(, false);
-                        }
-                    }
                 }
 
                 if (command.getCommandType().equals(Command.SET_TYPE)) {
