@@ -43,7 +43,7 @@ public class DistCacheStorage {
                 }
 
                 if (command.getCommandType().equals(Command.SET_TYPE)) {
-                               
+
                 }
             }
         }
