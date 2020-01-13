@@ -65,7 +65,9 @@ public class ProxyServer {
                 Command command = new Command(message.getLast().toString());
 
                 if (command.getCommandType().equals(Command.GET_TYPE)) {
-                    sendRequest(command, message);
+                    if (!sendRequest(command, message)) {
+                        message.getLast().reset();
+                    }
                 }
 
                 if (command.getCommandType().equals(Command.SET_TYPE)) {
