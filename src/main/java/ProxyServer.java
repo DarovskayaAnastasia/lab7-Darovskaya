@@ -15,7 +15,7 @@ public class ProxyServer {
 //    private static final Map<String, StorageInfo> storages = new HashMap<>();
     private static final List<StorageInfo> storages = new ArrayList<>();
 
-    private static boolean GetRequest(Command command, ZMsg message) {
+    private static boolean sendRequest(Command command, ZMsg message) {
         int key = command.getKey();
 
 //        for (Map.Entry<String, StorageInfo> record : storages.entrySet()) {
@@ -28,12 +28,6 @@ public class ProxyServer {
                 return true;
             }
         }
-
-        return false;
-    }
-
-    private static boolean SetRequest(Command command, ZMsg message) {
-
 
         return false;
     }
@@ -71,7 +65,7 @@ public class ProxyServer {
                 Command command = new Command(message.getLast().toString());
 
                 if (command.getCommandType().equals(Command.GET_TYPE)) {
-
+                    sendRequest(command, message);
                 }
 
                 if (command.getCommandType().equals(Command.SET_TYPE)) {
