@@ -28,7 +28,13 @@ public class ProxyServer {
                 return true;
             }
         }
-        
+
+        return false;
+    }
+
+    private static boolean SetRequest(Command command, ZMsg message) {
+
+
         return false;
     }
 
