@@ -12,7 +12,7 @@ public class ProxyServer {
     private static ZMQ.Socket frontend;
     private static ZMQ.Socket backend;
 
-//    private static final Map<String, StorageInfo> storages = new HashMap<>();
+    //    private static final Map<String, StorageInfo> storages = new HashMap<>();
     private static final List<StorageInfo> storages = new ArrayList<>();
 
     private static boolean sendRequest(Command command, ZMsg message) {
@@ -64,16 +64,25 @@ public class ProxyServer {
 
                 Command command = new Command(message.getLast().toString());
 
-                if (command.getCommandType().equals(Command.GET_TYPE) || command.getCommandType().equals(Command.SET_TYPE)) {
+                if (command.getCommandType().equals(Command.GET_TYPE)) {
                     if (!sendRequest(command, message)) {
                         message.getLast().reset("(ProxyServer message): ERROR - Out of bounds cache");
                         message.send(frontend);
                     }
-                    else if (command.getCommandType().equals(Command.SET_TYPE)) {
-                        ZMsg responseMessage = new ZMsg();
-                        responseMessage.add(new ZFrame("DATA recorded"))
-                        System.out.println("(ProxyServer message): SET is done");
+                }
+
+                if (command.getCommandType().equals(Command.SET_TYPE)) {
+                    String
+                    if (!sendRequest(command, message)) {
+                        System.out.println("(ProxyServer message): ERROR - Out of bounds cache");
                     }
+
+                    ZMsg responseMessage = new ZMsg();
+                    responseMessage.add(new ZFrame("DATA recorded"));
+                    responseMessage.wrap(message.getFirst());
+                    responseMessage.send(frontend);
+                    System.out.println("(ProxyServer message): SET is done");
+
                 }
             }
 
