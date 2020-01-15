@@ -95,7 +95,7 @@ public class ProxyServer {
                 Command command = new Command(message.getLast().toString());
 
                 if (command.getCommandType().equals(Command.NOTIFY_TYPE)) {
-                    
+
 
                 } else if (!command.getCommandType().equals(Command.INCORRECT_TYPE)) {
 
