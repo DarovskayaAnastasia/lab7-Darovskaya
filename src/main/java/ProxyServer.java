@@ -89,12 +89,13 @@ public class ProxyServer {
             if (poller.pollin(BACKEND_INDEX)) {
                 ZMsg message = ZMsg.recvMsg(backend);
 
-                ZFrame address = message.unwrap();
-                String id = new String(address.getData(), ZMQ.CHARSET);
+                ZFrame id = message.unwrap();
+//                String id = new String(address.getData(), ZMQ.CHARSET);
 
                 Command command = new Command(message.getLast().toString());
 
                 if (command.getCommandType().equals(Command.NOTIFY_TYPE)) {
+                    
 
                 } else if (!command.getCommandType().equals(Command.INCORRECT_TYPE)) {
 
