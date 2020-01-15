@@ -95,12 +95,18 @@ public class ProxyServer {
                 Command command = new Command(message.getLast().toString());
 
                 if (command.getCommandType().equals(Command.NOTIFY_TYPE)) {
-
+                    for (StorageInfo info : storages) {
+                        if (info.getAddress().equals(id)) {
+                            info.setTimer(System.currentTimeMillis());
+                        }
+                    }
 
                 } else if (!command.getCommandType().equals(Command.INCORRECT_TYPE)) {
-
+                    message.send(frontend);
                 }
             }
+
+            storages.removeIf(StorageInfo::isDead);
 
         }
 
