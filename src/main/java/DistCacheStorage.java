@@ -24,7 +24,7 @@ public class DistCacheStorage {
         int endCell = Integer.parseInt(args[1]);
         Map<Integer, Integer> storage = new HashMap<>();
 
-        ZMQ.Context context = ZMQ.context(1);
+        ZMQ.Context context = ZMQ.context(0);
         ZMQ.Socket socket = context.socket(SocketType.DEALER);
         socket.connect(STORAGE_ADDRESS);
         log.info("Storage connected to", STORAGE_ADDRESS);
