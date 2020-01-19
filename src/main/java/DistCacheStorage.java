@@ -44,16 +44,16 @@ public class DistCacheStorage {
 
             if (message != null) {
                 Command command = new Command((message.getLast().toString()));
-                log.info("command type is", command.getCommandType());
+                log.info("command is", command.toString());
 
-                if (command.getCommandType().equals(Command.GET_TYPE)) {
+                if (command.typeCheck(Command.GET_TYPE)) {
                     // String value = storage.get(command.getKey());
 
                     message.getLast().reset("RESPONSE");
                     message.send(socket);
                 }
 
-                if (command.getCommandType().equals(Command.SET_TYPE)) {
+                if (command.typeCheck(Command.SET_TYPE)) {
 
                 }
             }
