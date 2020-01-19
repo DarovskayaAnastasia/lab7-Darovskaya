@@ -25,7 +25,7 @@ public class DistCacheStorage {
 
 //        endless loop
         while (!Thread.currentThread().isInterrupted()) {
-            if ( /* heartbeat checkout*/) {
+            if ( true) {
                 // send heartbeat
             }
 

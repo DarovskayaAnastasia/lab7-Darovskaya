@@ -1,9 +1,10 @@
-import org.zeromq.*;
+import org.zeromq.SocketType;
+import org.zeromq.ZFrame;
+import org.zeromq.ZMQ;
+import org.zeromq.ZMsg;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ProxyServer {
     private static final int FRONTEND_INDEX = 0;
@@ -72,7 +73,7 @@ public class ProxyServer {
                 }
 
                 if (command.getCommandType().equals(Command.SET_TYPE)) {
-                    String
+                    String s;
                     if (!sendRequest(command, message)) {
                         System.out.println("(ProxyServer message): ERROR - Out of bounds cache");
                     }
