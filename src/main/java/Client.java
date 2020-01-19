@@ -50,6 +50,7 @@ public class Client {
 class Command {
     static final String INCORRECT_TYPE = "INCORRECT";
     static final String NOTIFY_TYPE = "NOTIFY";
+    static final String CONNECT_TYPE = "CONNECT";
     static final String SET_TYPE = "SET";
     static final String GET_TYPE = "GET";
 
@@ -82,6 +83,14 @@ class Command {
     private void parseNOTIFY(String ...args) {
         if (args.length == 2 && isInt(args[0]) && isInt(args[1])){
             commandType = NOTIFY_TYPE;
+            begin = Integer.parseInt(args[0]);
+            end = Integer.parseInt(args[1]);
+        }
+    }
+
+    private void parseCONNECT(String ...args) {
+        if (args.length == 2 && isInt(args[0]) && isInt(args[1])){
+            commandType = CONN;
             begin = Integer.parseInt(args[0]);
             end = Integer.parseInt(args[1]);
         }
