@@ -146,6 +146,10 @@ class Command {
 
     @Override
     public String toString() {
-        return commandType + " " + key + " " + value;
+        StringBuilder sb = new StringBuilder(commandType).append(": ");
+        for (String arg : args) {
+            sb.append(arg).append("; ");
+        }
+        return sb.toString();
     }
 }
