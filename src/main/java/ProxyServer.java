@@ -22,7 +22,6 @@ public class ProxyServer {
 //        for (Map.Entry<String, StorageInfo> record : storages.entrySet()) {
 //            StorageInfo info = record.getValue();
         for (StorageInfo info : storages) {
-
             if (info.getStart() <= key && key <= info.getEnd()) {
                 info.getAddress().send(backend, ZFrame.REUSE + ZFrame.MORE);
                 message.send(backend, false);
