@@ -147,7 +147,7 @@ class Command {
         for (String arg : args) {
             sb.append(arg).append(" ");
         }
-        sb.delete(sb.length() - 1, sb.length());
+        sb.delete(sb.length() - 2, sb.length());
         return sb.toString();
     }
 }
