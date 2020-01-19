@@ -63,6 +63,7 @@ public class ProxyServer {
             if (poller.pollin(FRONTEND_INDEX)) {
                 ZMsg message = ZMsg.recvMsg(frontend);
                 Command command = new Command(message.getLast().toString());
+                log.info("received command from client", command);
 
                 if (command.typeCheck(Command.GET_TYPE, Command.SET_TYPE)) {
                     if (!sendRequest(command, message)) {
@@ -71,7 +72,7 @@ public class ProxyServer {
                         message.send(frontend);
                     }
 
-                    if (command.typeCheck(Command.SET_TYPE)){
+                    if (command.typeCheck(Command.SET_TYPE)) {
                         message.getLast().reset("DATA recorded");
                         message.send(frontend);
                     }
@@ -86,22 +87,17 @@ public class ProxyServer {
 //                String id = new String(address.getData(), ZMQ.CHARSET);
 
                 Command command = new Command(message.getLast().toString());
-                log.info("adsa", command);
+                log.info("received command from cache", command);
                 if (command.typeCheck(Command.NOTIFY_TYPE)) {
                     for (StorageInfo info : storages) {
                         if (info.getAddress().equals(id)) {
                             info.setTimer(System.currentTimeMillis());
                         }
                     }
-
-                } else if (!command.typeCheck(Command.INCORRECT_TYPE)) {
-                    message.send(frontend);
                 }
 
                 if (command.typeCheck(Command.CONNECT_TYPE)) {
                     log.info("new cache by cmd", command);
-
-
                 }
             }
 
