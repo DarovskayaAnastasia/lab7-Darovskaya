@@ -56,6 +56,7 @@ class Command {
     static final String CONNECT_TYPE = "CONNECT";
     static final String SET_TYPE = "SET";
     static final String GET_TYPE = "GET";
+    static final String RESPONSE_TYPE = "RESPONSE";
 
     private String commandType;
     private String[] args;
