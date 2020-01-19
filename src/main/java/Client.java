@@ -64,6 +64,7 @@ class Command {
     public Command(String command) {
         String[] parsedCommand = command.split(" ");
         String keyword = parsedCommand[0];
+        commandType = INCORRECT_TYPE;
 
         if (keyword.equals("SET")) {
             if (parsedCommand.length == 3 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find()) {
@@ -76,7 +77,7 @@ class Command {
                 commandType = GET_TYPE;
                 key = Integer.parseInt(parsedCommand[1]);
             }
-        } else if (!keyword.equals("QUIT")) {
+        } else if (keyword.equals("QUIT")) {
             commandType = INCORRECT_TYPE;
         }
     }
