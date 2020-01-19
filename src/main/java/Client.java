@@ -20,7 +20,12 @@ public class Client {
 
         // endless loop
         while (true) {
-            Command command = new Command(input.nextLine());
+            String cmd = input.nextLine();
+            if(cmd.equals("QUIT")){
+                System.out.println("--- QUIT");
+                break;
+            }
+            Command command = new Command(cmd);
 
             if (command.getCommandType().equals(Command.INCORRECT_TYPE)) {
                 System.out.println("(Client message): incorrect command");
@@ -33,10 +38,7 @@ public class Client {
 
                 System.out.println("(Client message): response: " + response);
 
-            } else {
-                System.out.println("--- QUIT");
-                break;
-            }
+            } 
         }
 
         // We never get here but clean up anyhow
