@@ -71,8 +71,9 @@ public class ProxyServer {
                         message.send(frontend);
                     }
 
-                    if (command.typeCheck(Command.GET_TYPE)){
-
+                    if (command.typeCheck(Command.SET_TYPE)){
+                        message.getLast().reset("DATA recorded");
+                        message.send(frontend);
                     }
                 }
 
