@@ -5,7 +5,11 @@ public class Logger {
         this.prefix = prefix;
     }
 
-    public void log(String s) {
+    public void log(String ... strs) {
+        StringBuilder sb = new StringBuilder();
+        for (str: strs) {
+            
+        }
         System.out.println(prefix + ": " + s);
     }
 }
