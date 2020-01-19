@@ -6,6 +6,8 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Client {
+    private static final Logger log = new Logger("(Client message)");
+
     public static void main(String[] args) {
 
         ZMQ.Context context = ZMQ.context(1);
@@ -14,7 +16,7 @@ public class Client {
         ZMQ.Socket requester = context.socket(SocketType.REQ);
         requester.connect("tcp://localhost:5559");
 
-        System.out.println("(Client message): Launch and connect client...");
+        log.log("Launch and connect client...");
         System.out.println("--- Enter QUIT for exit");
 
         Scanner input = new Scanner(System.in);
