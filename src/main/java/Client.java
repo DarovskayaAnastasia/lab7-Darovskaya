@@ -123,7 +123,7 @@ class Command {
         return false;
     }
 
-    
+
     private defaultIfType()
 
     public int getKey() {
