@@ -37,7 +37,7 @@ public class Client {
                 requester.send(command.toString(), 0);
                 String response = requester.recvStr(0);
 
-                System.out.println("(Client message): response: " + response);
+                log.info("response:", response);
 
             } else {
                 log.info("incorrect command");
@@ -86,7 +86,7 @@ class Command {
             commandType = CONNECT_TYPE;
     }
 
-    private void parse(String keyword, String ...args){
+    private void parse(String keyword, String... args) {
         this.args = args;
         commandType = INCORRECT_TYPE;
         parseSET(keyword);
@@ -100,7 +100,7 @@ class Command {
         parse(parsedCommand[0], Arrays.copyOfRange(parsedCommand, 1, parsedCommand.length));
     }
 
-    public Command(String keyword, String ...args) {
+    public Command(String keyword, String... args) {
         parse(keyword, args);
     }
 

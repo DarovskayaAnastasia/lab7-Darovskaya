@@ -17,7 +17,7 @@ public class Logger {
         System.out.println(sb.toString());
     }
 
-    public void log(String... strs) {
+    private void log(String... strs) {
         withPrefix("", strs);
     }
 
