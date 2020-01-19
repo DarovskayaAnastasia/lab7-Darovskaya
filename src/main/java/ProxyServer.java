@@ -100,14 +100,8 @@ public class ProxyServer {
 
                 if (command.typeCheck(Command.CONNECT_TYPE)) {
                     log.info("new cache by cmd", command);
-                    for (StorageInfo info : storages) {
-                        if (info.getAddress().equals(id)) {
-                            info.setTimer(System.currentTimeMillis());
-                        }
-                    }
 
-                } else if (!command.typeCheck(Command.INCORRECT_TYPE)) {
-                    message.send(frontend);
+
                 }
             }
 
