@@ -63,8 +63,13 @@ class Command {
         this.value = value;
     }
 
+    private Pattern intPattern =  Pattern.compile("\\d+$");
+    private boolean isInt(String s){
+
+    }
+
     private void parseSET(String ...args) {
-        if (args.length == 3 && Pattern.compile("\\d+$").matcher(args[1]).find()) {
+        if (args.length == 3 && .matcher(args[1]).find()) {
             commandType = SET_TYPE;
             key = Integer.parseInt(args[1]);
             value = args[2];
@@ -79,7 +84,7 @@ class Command {
     }
 
     private void parseNOTIFY(String ...args) {
-
+        if (args.length == 2 && )
     }
 
 
