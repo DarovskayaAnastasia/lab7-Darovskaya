@@ -18,7 +18,8 @@ public class DistCacheStorage {
 ////            System.err.println("(DistCacheStorage message): ERROR, incorrect number of arguments");
 ////            return;
 ////        }
-
+        Map<Integer, Integer> storage = new HashMap<>();
+        
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket socket = context.socket(SocketType.DEALER);
         socket.connect(STORAGE_ADDRESS);
