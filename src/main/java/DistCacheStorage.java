@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class DistCacheStorage {
     public static final int HEARTBEAT_TIMEOUT = 3000;
-    public static final String STORAGE_ADDRESS = "tcp://localhost:5556";
+    public static final String STORAGE_ADDRESS = "tcp://localhost:5559";
 
     private static int start;
     private static int end;
