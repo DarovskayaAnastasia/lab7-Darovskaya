@@ -143,9 +143,9 @@ class Command {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder(commandType).append(" ");
+        StringBuilder sb = new StringBuilder(commandType).append(": ");
         for (String arg : args) {
-            sb.append(arg).append(" ");
+            sb.append(arg).append(", ");
         }
         sb.delete(sb.length() - 2, sb.length());
         return sb.toString();
