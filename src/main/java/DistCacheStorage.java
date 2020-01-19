@@ -20,8 +20,8 @@ public class DistCacheStorage {
             return;
         }
 
-        Integer startCell = Integer.parseInt(args[0]);
-        Integer endCell = Integer.parseInt(args[1]);
+        int startCell = Integer.parseInt(args[0]);
+        int endCell = Integer.parseInt(args[1]);
         Map<Integer, Integer> storage = new HashMap<>();
 
         ZMQ.Context context = ZMQ.context(1);
