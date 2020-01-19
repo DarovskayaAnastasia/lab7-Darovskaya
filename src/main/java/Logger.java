@@ -10,7 +10,6 @@ public class Logger {
         for (String str : strs) {
             sb.append(" ").append(str);
         }
-        System.out.println(prefix + ": " + s);
     }
 }
 
