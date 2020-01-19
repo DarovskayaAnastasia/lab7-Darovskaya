@@ -93,7 +93,7 @@ class Command {
         String[] parsedCommand = command.split(" ");
         String keyword = parsedCommand[0];
         commandType = INCORRECT_TYPE;
-        args = ;
+        args = Arra;
 
         if () {
             if (parsedCommand.length == 3 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find()) {
