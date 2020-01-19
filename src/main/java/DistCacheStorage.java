@@ -18,9 +18,9 @@ public class DistCacheStorage {
             System.err.println("(DistCacheStorage message): ERROR, incorrect number of arguments");
             return;
         }
+        
         int startCell = Integer.parseInt(args[0]);
         int endCell = Integer.parseInt(args[1]);
-        
         Map<Integer, Integer> storage = new HashMap<>();
 
         ZMQ.Context context = ZMQ.context(1);
