@@ -105,7 +105,7 @@ public class ProxyServer {
                 }
             }
 
-            storages.removeIf(StorageInfo::isDead);
+            // storages.removeIf(StorageInfo::isDead);
 
         }
 
