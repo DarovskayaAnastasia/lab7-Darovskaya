@@ -56,35 +56,33 @@ class Command {
     private String commandType;
     private int key;
     private String value;
-
-    public Command(String commandType, int key, String value) {
-        this.commandType = commandType;
-        this.key = key;
-        this.value = value;
-    }
+    private int begin;
+    private int end;
 
     private Pattern intPattern =  Pattern.compile("\\d+$");
     private boolean isInt(String s){
-
+        return intPattern.matcher(s).find();
     }
 
     private void parseSET(String ...args) {
-        if (args.length == 3 && .matcher(args[1]).find()) {
+        if (args.length == 2 && isInt(args[0])) {
             commandType = SET_TYPE;
-            key = Integer.parseInt(args[1]);
-            value = args[2];
+            key = Integer.parseInt(args[0]);
+            value = args[1];
         }
     }
 
     private void parseGET(String ...args) {
-        if (args.length == 2 && Pattern.compile("\\d+$").matcher(args[1]).find()) {
+        if (args.length == 1 && isInt(args[0])) {
             commandType = GET_TYPE;
-            key = Integer.parseInt(args[1]);
+            key = Integer.parseInt(args[0]);
         }
     }
 
     private void parseNOTIFY(String ...args) {
-        if (args.length == 2 && )
+        if (args.length == 2 && isInt(args[0]) && isInt(args[1])){
+
+        }
     }
 
 
