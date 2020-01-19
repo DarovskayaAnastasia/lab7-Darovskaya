@@ -1,7 +1,6 @@
 import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -69,23 +68,23 @@ class Command {
         return commandType.equals(this.commandType);
     }
 
-    private void parseSET(String cmd, String... args) {
-        if (isCommandType(SET_TYPE) && args.length == 2 && isInt(args[0]))
+    private void parseSET(String cmd) {
+        if (cmd.equals(SET_TYPE) && args.length == 2 && isInt(args[0]))
             commandType = SET_TYPE;
     }
 
-    private void parseGET(String cmd, String... args) {
-        if (args.length == 1 && isInt(args[0]))
+    private void parseGET(String cmd) {
+        if (cmd.equals(GET_TYPE) &&args.length == 1 && isInt(args[0]))
             commandType = GET_TYPE;
     }
 
-    private void parseNOTIFY(String cmd, String... args) {
-        if (args.length == 2 && isInt(args[0]) && isInt(args[1]))
+    private void parseNOTIFY(String cmd) {
+        if (cmd.equals(NOTIFY_TYPE) &&args.length == 2 && isInt(args[0]) && isInt(args[1]))
             commandType = NOTIFY_TYPE;
     }
 
-    private void parseCONNECT(String cmd, String... args) {
-        if (args.length == 2 && isInt(args[0]) && isInt(args[1]))
+    private void parseCONNECT(String cmd) {
+        if (cmd.equals(CONNECT_TYPE) && args.length == 2 && isInt(args[0]) && isInt(args[1]))
             commandType = CONNECT_TYPE;
     }
 
@@ -94,20 +93,9 @@ class Command {
         String[] parsedCommand = command.split(" ");
         String keyword = parsedCommand[0];
         commandType = INCORRECT_TYPE;
-        args = Arrays.;
+        args = Arrays.copyOfRange(parsedCommand, 1, parsedCommand.length);
 
-        if () {
-            if (parsedCommand.length == 3 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find()) {
-                commandType = SET_TYPE;
-                key = Integer.parseInt(parsedCommand[1]);
-                value = parsedCommand[2];
-            }
-        } else if (keyword.equals(GET_TYPE)) {
-            if (parsedCommand.length == 2 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find()) {
-                commandType = GET_TYPE;
-                key = Integer.parseInt(parsedCommand[1]);
-            }
-        }
+        pa
     }
 
     public String getCommandType() {
