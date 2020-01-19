@@ -140,7 +140,7 @@ class Command {
         for (String arg : args) {
             sb.append(arg).append(", ");
         }
-        sb
+        sb.de
         return sb.toString();
     }
 }
