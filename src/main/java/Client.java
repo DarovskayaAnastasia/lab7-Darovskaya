@@ -81,7 +81,8 @@ class Command {
 
     private void parseNOTIFY(String ...args) {
         if (args.length == 2 && isInt(args[0]) && isInt(args[1])){
-
+            begin = Integer.parseInt(args[0]);
+            begin = Integer.parseInt(args[1]);
         }
     }
 
