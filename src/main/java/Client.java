@@ -116,7 +116,20 @@ class Command {
         return commandType;
     }
 
+    private boolean typeCheck( String ...types){
+        for (String t: types) {
+            if (this.commandType.equals(t)) return true;
+        }
+        return false;
+    }
+
+    
+    private defaultIfType()
+
     public int getKey() {
+        if (!typeCheck(SET_TYPE, GET_TYPE)){
+            return 0;
+        }
         return Integer.parseInt(args[0]);
     }
 
