@@ -105,6 +105,7 @@ class Command {
     }
 
     public Command(String keyword, Object... args) {
+        String []strs = new
         parse(keyword, args);
     }
 
