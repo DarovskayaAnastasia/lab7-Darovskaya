@@ -123,12 +123,6 @@ class Command {
         return false;
     }
 
-
-    private  T defaultIfType(T def, String ...types){
-
-        return def;
-    }
-
     public int getKey() {
         if (!typeCheck(SET_TYPE, GET_TYPE)){
             return 0;
