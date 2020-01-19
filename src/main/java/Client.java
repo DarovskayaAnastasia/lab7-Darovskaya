@@ -73,9 +73,8 @@ class Command {
     }
 
     private void parseGET(String... args) {
-        if (args.length == 1 && isInt(args[0])) {
+        if (args.length == 1 && isInt(args[0]))
             commandType = GET_TYPE;
-        }
     }
 
     private void parseNOTIFY(String... args) {
