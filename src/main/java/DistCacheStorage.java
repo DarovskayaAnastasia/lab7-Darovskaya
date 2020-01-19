@@ -31,7 +31,7 @@ public class DistCacheStorage {
 
         long heartbeatTime = System.currentTimeMillis() + HEARTBEAT_TIMEOUT;
 
-        socket.send(new Command(Command.CONNECT_TYPE, startCell, endCell).toString(), 0);
+        socket.send(new Command(Command.CONNECT_TYPE, startCell, endCell).encode(), 0);
 
         log.info("Storage has been started...");
 

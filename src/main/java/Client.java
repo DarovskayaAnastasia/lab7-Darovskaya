@@ -150,4 +150,13 @@ class Command {
         sb.delete(sb.length() - 2, sb.length());
         return sb.toString();
     }
+
+    public String encode() {
+        StringBuilder sb = new StringBuilder(commandType).append(" ");
+        for (String arg : args) {
+            sb.append(arg).append(" ");
+        }
+        sb.delete(sb.length() - 1, sb.length());
+        return sb.toString();
+    }
 }
