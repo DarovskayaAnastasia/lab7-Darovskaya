@@ -94,8 +94,10 @@ class Command {
         String keyword = parsedCommand[0];
         commandType = INCORRECT_TYPE;
         args = Arrays.copyOfRange(parsedCommand, 1, parsedCommand.length);
-
-        pa
+        parseSET(keyword);
+        parseGET(keyword);
+        parseNOTIFY(keyword);
+        parseCONNECT(keyword);
     }
 
     public String getCommandType() {
