@@ -63,15 +63,25 @@ class Command {
         this.value = value;
     }
 
-    private boolean parseSET(String ...args) {
+    private void parseSET(String ...args) {
         if (args.length == 3 && Pattern.compile("\\d+$").matcher(args[1]).find()) {
             commandType = SET_TYPE;
             key = Integer.parseInt(args[1]);
             value = args[2];
-            return true;
         }
-        return false;
     }
+
+    private void parseGET(String ...args) {
+        if (args.length == 2 && Pattern.compile("\\d+$").matcher(args[1]).find()) {
+            commandType = GET_TYPE;
+            key = Integer.parseInt(args[1]);
+        }
+    }
+
+    private void parseNOTIFY(String ...args) {
+
+    }
+
 
     public Command(String command) {
         String[] parsedCommand = command.split(" ");
