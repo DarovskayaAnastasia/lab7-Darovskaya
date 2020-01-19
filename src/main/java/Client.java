@@ -138,8 +138,9 @@ class Command {
     public String toString() {
         StringBuilder sb = new StringBuilder(commandType).append(": ");
         for (String arg : args) {
-            sb.append(arg).append("; ");
+            sb.append(arg).append(", ");
         }
+        sb
         return sb.toString();
     }
 }
