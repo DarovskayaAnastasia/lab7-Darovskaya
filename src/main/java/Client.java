@@ -68,18 +68,18 @@ class Command {
         String keyword = parsedCommand[0];
         commandType = INCORRECT_TYPE;
 
-        if (keyword.equals("SET")) {
+        if (keyword.equals(SET_TYPE)) {
             if (parsedCommand.length == 3 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find()) {
                 commandType = SET_TYPE;
                 key = Integer.parseInt(parsedCommand[1]);
                 value = parsedCommand[2];
             }
-        } else if (keyword.equals("GET")) {
+        } else if (keyword.equals(GET_TYPE)) {
             if (parsedCommand.length == 2 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find()) {
                 commandType = GET_TYPE;
                 key = Integer.parseInt(parsedCommand[1]);
             }
-        } 
+        }
     }
 
     public String getCommandType() {
