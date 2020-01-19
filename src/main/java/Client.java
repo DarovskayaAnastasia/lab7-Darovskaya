@@ -78,9 +78,8 @@ class Command {
     }
 
     private void parseNOTIFY(String... args) {
-        if (args.length == 2 && isInt(args[0]) && isInt(args[1])) {
+        if (args.length == 2 && isInt(args[0]) && isInt(args[1]))
             commandType = NOTIFY_TYPE;
-        }
     }
 
     private void parseCONNECT(String... args) {
