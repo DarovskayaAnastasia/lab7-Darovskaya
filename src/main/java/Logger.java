@@ -5,7 +5,9 @@ public class Logger {
         this.prefix = prefix;
     }
 
-    public log()
+    public void log(String s) {
+        System.out.println(prefix + ": " + s);
+    }
 }
 
 
