@@ -95,7 +95,7 @@ public class ProxyServer {
 //                String id = new String(address.getData(), ZMQ.CHARSET);
 
                 Command command = new Command(message.getLast().toString());
-                log.info("adsa", command.toString());
+                log.info("adsa", command);
                 if (command.typeCheck(Command.NOTIFY_TYPE)) {
                     for (StorageInfo info : storages) {
                         if (info.getAddress().equals(id)) {
