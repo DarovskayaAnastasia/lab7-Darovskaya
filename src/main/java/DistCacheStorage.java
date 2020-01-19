@@ -18,7 +18,7 @@ public class DistCacheStorage {
             System.err.println("(DistCacheStorage message): ERROR, incorrect number of arguments");
             return;
         }
-        
+
         int startCell = Integer.parseInt(args[0]);
         int endCell = Integer.parseInt(args[1]);
         Map<Integer, Integer> storage = new HashMap<>();
@@ -26,6 +26,9 @@ public class DistCacheStorage {
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket socket = context.socket(SocketType.DEALER);
         socket.connect(STORAGE_ADDRESS);
+        System.out.println("(DistCacheStorage message): Storage connected to " + STORAGE_ADDRESS);
+
+        long heartbeatTime = System.currentTimeMillis() + HEARTBEAT_TIMEOUT;
 
         System.out.println("(DistCacheStorage message): Storage has been started...");
 
