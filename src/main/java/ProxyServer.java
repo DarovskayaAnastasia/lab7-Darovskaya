@@ -64,7 +64,6 @@ public class ProxyServer {
 
             if (poller.pollin(FRONTEND_INDEX)) {
                 ZMsg message = ZMsg.recvMsg(frontend);
-
                 Command command = new Command(message.getLast().toString());
 
                 if (command.typeCheck(Command.GET_TYPE)) {
