@@ -27,7 +27,7 @@ public class DistCacheStorage {
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket socket = context.socket(SocketType.DEALER);
         socket.connect(STORAGE_ADDRESS);
-       log.info("Storage connected to", STORAGE_ADDRESS);
+        log.info("Storage connected to", STORAGE_ADDRESS);
 
         long heartbeatTime = System.currentTimeMillis() + HEARTBEAT_TIMEOUT;
 
@@ -44,10 +44,10 @@ public class DistCacheStorage {
 
             if (message != null) {
                 Command command = new Command((message.getLast().toString()));
-                System.out.println("(DistCacheStorage message): command type is " + command.getCommandType());
+                log.info("command type is", command.getCommandType());
 
                 if (command.getCommandType().equals(Command.GET_TYPE)) {
-                   // String value = storage.get(command.getKey());
+                    // String value = storage.get(command.getKey());
 
                     message.getLast().reset("RESPONSE");
                     message.send(socket);
