@@ -27,7 +27,7 @@ public class DistCacheStorage {
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket socket = context.socket(SocketType.DEALER);
         socket.connect(STORAGE_ADDRESS);
-        System.out.println("(DistCacheStorage message): Storage connected to " + STORAGE_ADDRESS);
+       log.log("Storage connected to ", STORAGE_ADDRESS);
 
         long heartbeatTime = System.currentTimeMillis() + HEARTBEAT_TIMEOUT;
 
