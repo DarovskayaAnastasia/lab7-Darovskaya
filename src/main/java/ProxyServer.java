@@ -98,7 +98,7 @@ public class ProxyServer {
 
                 if (command.typeCheck(Command.CONNECT_TYPE)) {
                     log.info("new cache by cmd", command);
-                    storages.add()
+                    storages.add(new StorageInfo())
                 }
             }
 
