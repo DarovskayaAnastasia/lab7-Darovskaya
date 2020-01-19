@@ -104,6 +104,10 @@ class Command {
         parse(keyword, args);
     }
 
+    public Command(String keyword, Object... args) {
+        parse(keyword, args);
+    }
+
     public boolean typeCheck(String... types) {
         for (String t : types) {
             if (this.commandType.equals(t)) return true;

@@ -20,8 +20,8 @@ public class DistCacheStorage {
             return;
         }
 
-        int startCell = Integer.parseInt(args[0]);
-        int endCell = Integer.parseInt(args[1]);
+        Integer startCell = Integer.parseInt(args[0]);
+        Integer endCell = Integer.parseInt(args[1]);
         Map<Integer, Integer> storage = new HashMap<>();
 
         ZMQ.Context context = ZMQ.context(1);
@@ -31,7 +31,7 @@ public class DistCacheStorage {
 
         long heartbeatTime = System.currentTimeMillis() + HEARTBEAT_TIMEOUT;
 
-        socket.send(new Command(Command.CONNECT_TYPE, "")), ;
+        socket.send(new Command(Command.CONNECT_TYPE, startCell, endCell).toString(), 0);
 
         log.info("Storage has been started...");
 
