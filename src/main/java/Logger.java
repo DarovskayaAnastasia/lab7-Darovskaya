@@ -30,7 +30,7 @@ public class Logger {
     }
 
     public void warn(String... strs) {
-        withPrefix("WAR", strs);
+        withPrefix("WARN", strs);
     }
 }
 
