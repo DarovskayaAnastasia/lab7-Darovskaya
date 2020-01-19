@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DistCacheStorage {
+    public static final int HEARTBEAT_TIMEOUT = 3000;
+    public static final String STORAGE_ADDRESS = "tcp://localhost:5556";
 
     private static int start;
     private static int end;
@@ -19,7 +21,7 @@ public class DistCacheStorage {
 
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket socket = context.socket(SocketType.DEALER);
-        socket.connect("tcp://localhost:5560");
+        socket.connect(STORAGE_ADDRESS);
 
         System.out.println("(DistCacheStorage message): Storage has been started...");
 
