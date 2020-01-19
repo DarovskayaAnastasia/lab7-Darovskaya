@@ -105,8 +105,11 @@ class Command {
     }
 
     public Command(String keyword, Object... args) {
-        String []strs = new
-        parse(keyword, args);
+        String[] strs = new String[args.length];
+        for(int i =0; i < args.length; i++){
+            strs[i] = args[i].toString();
+        }
+        parse(keyword, strs);
     }
 
     public boolean typeCheck(String... types) {
