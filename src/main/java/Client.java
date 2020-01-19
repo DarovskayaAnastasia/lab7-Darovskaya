@@ -67,22 +67,22 @@ class Command {
         return commandType.equals(this.commandType);
     }
 
-    private void parseSET(String... args) {
+    private void parseSET(String cmd, String... args) {
         if (isCommandType(SET_TYPE) && args.length == 2 && isInt(args[0]))
             commandType = SET_TYPE;
     }
 
-    private void parseGET(String... args) {
+    private void parseGET(String cmd, String... args) {
         if (args.length == 1 && isInt(args[0]))
             commandType = GET_TYPE;
     }
 
-    private void parseNOTIFY(String... args) {
+    private void parseNOTIFY(String cmd, String... args) {
         if (args.length == 2 && isInt(args[0]) && isInt(args[1]))
             commandType = NOTIFY_TYPE;
     }
 
-    private void parseCONNECT(String... args) {
+    private void parseCONNECT(String cmd, String... args) {
         if (args.length == 2 && isInt(args[0]) && isInt(args[1]))
             commandType = CONNECT_TYPE;
     }
