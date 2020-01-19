@@ -31,17 +31,16 @@ public class Client {
             }
             Command command = new Command(cmd);
 
-            if (command.getCommandType().equals(Command.INCORRECT_TYPE)) {
-                System.out.println("(Client message): incorrect command");
-
-            } else if (command.getCommandType().equals(Command.SET_TYPE)) {
-                System.out.println("(Client message): " + command.getCommandType() + " command accepted for processing");
+            if (command.getCommandType().equals(Command.SET_TYPE) || command.getCommandType().equals(Command.GET_TYPE)) {
+                log.info(command.getCommandType(), "command accepted for processing");
 
                 requester.send(command.toString(), 0);
                 String response = requester.recvStr(0);
 
                 System.out.println("(Client message): response: " + response);
 
+            } else {
+                log.info("incorrect command");
             }
         }
 
