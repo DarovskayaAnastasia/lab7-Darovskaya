@@ -32,7 +32,7 @@ public class Client {
             Command command = new Command(cmd);
 
             if (command.typeCheck(Command.SET_TYPE, Command.GET_TYPE)) {
-                log.info(command.toString(), "command accepted for processing");
+                log.info(command, "command accepted for processing");
 
                 requester.send(command.encode(), 0);
                 String response = requester.recvStr(0);

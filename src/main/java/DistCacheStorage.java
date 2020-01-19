@@ -46,7 +46,7 @@ public class DistCacheStorage {
 
             if (message != null) {
                 Command command = new Command((message.getLast().toString()));
-                log.info("command is", command.toString());
+                log.info("command is", command);
 
                 if (command.typeCheck(Command.GET_TYPE)) {
                     // String value = storage.get(command.getKey());
