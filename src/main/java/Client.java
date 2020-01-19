@@ -22,7 +22,6 @@ public class Client {
         while (true) {
             Command command = new Command(input.nextLine());
 
-            System.out.println(command.getCommandType());
             if (command.getCommandType().equals(Command.INCORRECT_TYPE)) {
                 System.out.println("(Client message): incorrect command");
 
