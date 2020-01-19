@@ -17,9 +17,9 @@ public class Logger {
         System.out.println(sb.toString());
     }
 
-    private void log(String... strs) {
-        withPrefix("", strs);
-    }
+//    private void log(String... strs) {
+//        withPrefix("", strs);
+//    }
 
     public void err(String... strs) {
         withPrefix("ERROR", strs);
@@ -27,6 +27,10 @@ public class Logger {
 
     public void info(String... strs) {
         withPrefix("INFO", strs);
+    }
+
+    public void warn(String... strs) {
+        withPrefix("WAR", strs);
     }
 }
 
