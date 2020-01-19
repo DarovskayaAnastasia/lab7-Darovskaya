@@ -27,11 +27,11 @@ public class DistCacheStorage {
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket socket = context.socket(SocketType.DEALER);
         socket.connect(STORAGE_ADDRESS);
-       log.log("Storage connected to ", STORAGE_ADDRESS);
+       log.info("Storage connected to", STORAGE_ADDRESS);
 
         long heartbeatTime = System.currentTimeMillis() + HEARTBEAT_TIMEOUT;
 
-        System.out.println("(DistCacheStorage message): Storage has been started...");
+        log.info("Storage has been started...");
 
 //        endless loop
         while (!Thread.currentThread().isInterrupted()) {
