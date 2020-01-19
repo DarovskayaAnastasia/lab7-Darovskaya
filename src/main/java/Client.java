@@ -15,9 +15,9 @@ public class Client {
 
         // socket to talk to server
         ZMQ.Socket requester = context.socket(SocketType.REQ);
-        requester.connect();
+        requester.connect(PROXY_ADDR);
 
-        log.info("Launch and connect client...");
+        log.info("Launch and connect client on", PROXY_ADDR);
         System.out.println("--- Enter QUIT for exit");
 
         Scanner input = new Scanner(System.in);
