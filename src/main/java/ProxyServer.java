@@ -88,13 +88,14 @@ public class ProxyServer {
             }
 
             if (poller.pollin(BACKEND_INDEX)) {
+
                 ZMsg message = ZMsg.recvMsg(backend);
 
                 ZFrame id = message.unwrap();
 //                String id = new String(address.getData(), ZMQ.CHARSET);
 
                 Command command = new Command(message.getLast().toString());
-
+                log.info("adsa", command.toString());
                 if (command.typeCheck(Command.NOTIFY_TYPE)) {
                     for (StorageInfo info : storages) {
                         if (info.getAddress().equals(id)) {
