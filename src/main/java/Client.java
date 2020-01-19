@@ -55,10 +55,7 @@ class Command {
     static final String GET_TYPE = "GET";
 
     private String commandType;
-    private int key;
-    private String value;
-    private int begin;
-    private int end;
+    private String [] args;
 
     private Pattern intPattern =  Pattern.compile("\\d+$");
     private boolean isInt(String s){
