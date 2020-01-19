@@ -21,7 +21,7 @@ public class Client {
         // endless loop
         while (true) {
             String cmd = input.nextLine();
-            if(cmd.equals("QUIT")){
+            if (cmd.equals("QUIT")) {
                 System.out.println("--- QUIT");
                 break;
             }
@@ -55,38 +55,37 @@ class Command {
     static final String GET_TYPE = "GET";
 
     private String commandType;
-    private String [] args;
+    private String[] args;
 
-    private Pattern intPattern =  Pattern.compile("\\d+$");
-    private boolean isInt(String s){
+    private Pattern intPattern = Pattern.compile("\\d+$");
+
+    private boolean isInt(String s) {
         return intPattern.matcher(s).find();
     }
 
-    private void parseSET(String ...args) {
+    private void parseSET(String... args) {
         if (args.length == 2 && isInt(args[0])) {
             commandType = SET_TYPE;
-            key = Integer.parseInt(args[0]);
-            value = args[1];
         }
     }
 
-    private void parseGET(String ...args) {
+    private void parseGET(String... args) {
         if (args.length == 1 && isInt(args[0])) {
             commandType = GET_TYPE;
             key = Integer.parseInt(args[0]);
         }
     }
 
-    private void parseNOTIFY(String ...args) {
-        if (args.length == 2 && isInt(args[0]) && isInt(args[1])){
+    private void parseNOTIFY(String... args) {
+        if (args.length == 2 && isInt(args[0]) && isInt(args[1])) {
             commandType = NOTIFY_TYPE;
             begin = Integer.parseInt(args[0]);
             end = Integer.parseInt(args[1]);
         }
     }
 
-    private void parseCONNECT(String ...args) {
-        if (args.length == 2 && isInt(args[0]) && isInt(args[1])){
+    private void parseCONNECT(String... args) {
+        if (args.length == 2 && isInt(args[0]) && isInt(args[1])) {
             commandType = CONN;
             begin = Integer.parseInt(args[0]);
             end = Integer.parseInt(args[1]);
@@ -118,12 +117,20 @@ class Command {
     }
 
     public int getKey() {
-        return key;
+        return Integer.parseInt(args[0]);
     }
 
     public String getValue() {
-        return value;
+        return args[1];
     }
+
+    public int getBegin() {
+        return Integer.parseInt(args[0]);
+    }
+    public int getEnd() {
+        return Integer.parseInt(args[1]);
+    }
+
 
     @Override
     public String toString() {
