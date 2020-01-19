@@ -34,7 +34,7 @@ public class Client {
             if (command.typeCheck(Command.SET_TYPE, Command.GET_TYPE)) {
                 log.info(command.toString(), "command accepted for processing");
 
-                requester.send(command.toString(), 0);
+                requester.send(command.encode(), 0);
                 String response = requester.recvStr(0);
 
                 log.info("response:", response);
