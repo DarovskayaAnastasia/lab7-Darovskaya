@@ -63,10 +63,13 @@ class Command {
         return intPattern.matcher(s).find();
     }
 
+    private boolean isCommandType(String commandType){
+        return commandType.equals(this.commandType);
+    }
+
     private void parseSET(String... args) {
-        if (args.length == 2 && isInt(args[0])) {
+        if (isCommandType(SET_TYPE) && args.length == 2 && isInt(args[0]))
             commandType = SET_TYPE;
-        }
     }
 
     private void parseGET(String... args) {
@@ -93,7 +96,7 @@ class Command {
         String keyword = parsedCommand[0];
         commandType = INCORRECT_TYPE;
 
-        if (keyword.equals(SET_TYPE)) {
+        if () {
             if (parsedCommand.length == 3 && Pattern.compile("\\d+$").matcher(parsedCommand[1]).find()) {
                 commandType = SET_TYPE;
                 key = Integer.parseInt(parsedCommand[1]);
