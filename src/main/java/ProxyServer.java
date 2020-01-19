@@ -16,6 +16,9 @@ public class ProxyServer {
     //    private static final Map<String, StorageInfo> storages = new HashMap<>();
     private static final List<StorageInfo> storages = new ArrayList<>();
 
+    private static final Logger log = new Logger("(ProxyServer message)");
+
+
     private static boolean sendRequest(Command command, ZMsg message) {
         int key = command.getKey();
 
@@ -33,7 +36,7 @@ public class ProxyServer {
     }
 
     public static void main(String[] args) {
-        System.out.println("(ProxyServer message): Launch Proxy...");
+        log.info("Launch Proxy...");
 
         ZMQ.Context context = ZMQ.context(1);
 
@@ -51,7 +54,7 @@ public class ProxyServer {
         ZMQ.Poller poller = context.poller(2);
         poller.register(frontend, ZMQ.Poller.POLLIN);
         poller.register(backend, ZMQ.Poller.POLLIN);
-        System.out.println("(ProxyServer message): Proxy has been started");
+        log.info("Proxy has been started");
 
 //        Endless loop
         while (!Thread.currentThread().isInterrupted()) {
@@ -73,14 +76,14 @@ public class ProxyServer {
 
                 if (command.typeCheck(Command.SET_TYPE)) {
                     if (!sendRequest(command, message)) {
-                        System.out.println("(ProxyServer message): ERROR - Out of bounds cache");
+                        log.info("ERROR - Out of bounds cache");
                     }
 
                     ZMsg responseMessage = new ZMsg();
                     responseMessage.add(new ZFrame("DATA recorded"));
                     responseMessage.wrap(message.getFirst());
                     responseMessage.send(frontend);
-                    System.out.println("(ProxyServer message): SET is done");
+                    log.info("SET is done");
 
                 }
             }
