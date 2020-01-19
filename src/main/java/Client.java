@@ -63,6 +63,16 @@ class Command {
         this.value = value;
     }
 
+    private boolean parseSET(String ...args) {
+        if (args.length == 3 && Pattern.compile("\\d+$").matcher(args[1]).find()) {
+            commandType = SET_TYPE;
+            key = Integer.parseInt(args[1]);
+            value = args[2];
+            return true;
+        }
+        return false;
+    }
+
     public Command(String command) {
         String[] parsedCommand = command.split(" ");
         String keyword = parsedCommand[0];
