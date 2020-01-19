@@ -32,7 +32,7 @@ public class Client {
             Command command = new Command(cmd);
 
             if (command.getCommandType().equals(Command.SET_TYPE) || command.getCommandType().equals(Command.GET_TYPE)) {
-                log.info(command.getCommandType(), "command accepted for processing");
+                log.info(command.toString(), "command accepted for processing");
 
                 requester.send(command.toString(), 0);
                 String response = requester.recvStr(0);
@@ -66,7 +66,7 @@ class Command {
         return intPattern.matcher(s).find();
     }
 
-    private boolean isCommandType(String commandType){
+    private boolean isCommandType(String commandType) {
         return commandType.equals(this.commandType);
     }
 
@@ -76,12 +76,12 @@ class Command {
     }
 
     private void parseGET(String cmd) {
-        if (cmd.equals(GET_TYPE) &&args.length == 1 && isInt(args[0]))
+        if (cmd.equals(GET_TYPE) && args.length == 1 && isInt(args[0]))
             commandType = GET_TYPE;
     }
 
     private void parseNOTIFY(String cmd) {
-        if (cmd.equals(NOTIFY_TYPE) &&args.length == 2 && isInt(args[0]) && isInt(args[1]))
+        if (cmd.equals(NOTIFY_TYPE) && args.length == 2 && isInt(args[0]) && isInt(args[1]))
             commandType = NOTIFY_TYPE;
     }
 
