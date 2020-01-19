@@ -38,7 +38,7 @@ public class Client {
 
                 System.out.println("(Client message): response: " + response);
 
-            } 
+            }
         }
 
         // We never get here but clean up anyhow
