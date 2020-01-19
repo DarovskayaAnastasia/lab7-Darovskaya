@@ -116,28 +116,30 @@ class Command {
         return commandType;
     }
 
-    private boolean typeCheck( String ...types){
-        for (String t: types) {
+    private boolean typeCheck(String... types) {
+        for (String t : types) {
             if (this.commandType.equals(t)) return true;
         }
         return false;
     }
 
     public int getKey() {
-        if (!typeCheck(SET_TYPE, GET_TYPE)){
-            return 0;
-        }
+        if (!typeCheck(SET_TYPE, GET_TYPE)) return -1;
         return Integer.parseInt(args[0]);
     }
 
     public String getValue() {
+        if (!typeCheck(SET_TYPE)) return "";
         return args[1];
     }
 
     public int getBegin() {
+        if (!typeCheck(CONNECT_TYPE, NOTIFY_TYPE)) return -1;
         return Integer.parseInt(args[0]);
     }
+
     public int getEnd() {
+        if (!typeCheck(CONNECT_TYPE, NOTIFY_TYPE)) return -1;
         return Integer.parseInt(args[1]);
     }
 
