@@ -9,12 +9,12 @@ public class DistCacheStorage {
     public static final int HEARTBEAT_TIMEOUT = 3000;
     public static final String STORAGE_ADDRESS = "tcp://localhost:5556";
 
-    private Logger log = new Logger("(DistCacheStorage message)");
     private static int start;
     private static int end;
     private static Map<Integer, String> storage = new HashMap<>();
 
     public static void main(String[] args) {
+        Logger log = new Logger("(DistCacheStorage message)");
         if (args.length < 2) {
             System.err.println("(DistCacheStorage message): ERROR, incorrect number of arguments");
             return;

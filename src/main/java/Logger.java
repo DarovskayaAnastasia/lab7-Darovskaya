@@ -10,6 +10,12 @@ public class Logger {
         for (String str : strs) {
             sb.append(" ").append(str);
         }
+
+        System.out.println(sb.toString());
+    }
+
+    public void error(String... strs) {
+        log(strs);
     }
 }
 
