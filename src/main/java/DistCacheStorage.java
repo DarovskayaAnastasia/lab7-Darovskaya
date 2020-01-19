@@ -12,14 +12,14 @@ public class DistCacheStorage {
     private static Map<Integer, String> storage = new HashMap<>();
 
     public static void main(String[] args) {
-        if (args.length < 2) {
-            System.err.println("(DistCacheStorage message): ERROR, incorrect number of arguments");
-            return;
-        }
+//        if (args.length < 2) {
+////            System.err.println("(DistCacheStorage message): ERROR, incorrect number of arguments");
+////            return;
+////        }
 
-        ZMQ.Context context = ZMQ.context(0);
+        ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket socket = context.socket(SocketType.DEALER);
-        socket.connect("tcp://localhost:5556");
+        socket.connect("tcp://localhost:5560");
 
         System.out.println("(DistCacheStorage message): Storage has been started...");
 
