@@ -31,6 +31,8 @@ public class DistCacheStorage {
 
         long heartbeatTime = System.currentTimeMillis() + HEARTBEAT_TIMEOUT;
 
+        
+
         log.info("Storage has been started...");
 
 //        endless loop

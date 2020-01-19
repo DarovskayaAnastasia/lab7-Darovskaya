@@ -76,7 +76,7 @@ public class ProxyServer {
 
                 if (command.typeCheck(Command.SET_TYPE)) {
                     if (!sendRequest(command, message)) {
-                        log.err("Out of bounds cache");
+                        log.warn("Out of bounds cache");
                     }
 
                     ZMsg responseMessage = new ZMsg();
