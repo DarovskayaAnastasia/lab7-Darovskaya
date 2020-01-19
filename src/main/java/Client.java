@@ -87,6 +87,11 @@ class Command {
             commandType = CONNECT_TYPE;
     }
 
+    private void parseRESPONSE(String cmd) {
+        if (cmd.equals(RESPONSE_TYPE) && args.length == 1)
+            commandType = RESPONSE_TYPE;
+    }
+
     private void parse(String keyword, String... args) {
         this.args = args;
         commandType = INCORRECT_TYPE;
