@@ -36,7 +36,7 @@ public class ProxyServer {
     public static void main(String[] args) {
         System.out.println("(ProxyServer message): Launch Proxy...");
 
-        ZMQ.Context context = ZMQ.context(1);
+        ZMQ.Context context = ZMQ.context(2);
 
 //        Socket facing clients
         frontend = context.socket(SocketType.ROUTER);
