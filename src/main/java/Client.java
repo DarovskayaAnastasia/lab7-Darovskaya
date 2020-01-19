@@ -86,25 +86,22 @@ class Command {
             commandType = CONNECT_TYPE;
     }
 
-    public Command(String command) {
-        String[] parsedCommand = command.split(" ");
-        String keyword = parsedCommand[0];
-        commandType = INCORRECT_TYPE;
-        args = Arrays.copyOfRange(parsedCommand, 1, parsedCommand.length);
-        parseSET(keyword);
-        parseGET(keyword);
-        parseNOTIFY(keyword);
-        parseCONNECT(keyword);
-        this.Command(keyword, args);
-    }
-
-    public Command(String keyword, String ...args) {
+    private void parse(String keyword, String ...args){
         this.args = args;
         commandType = INCORRECT_TYPE;
         parseSET(keyword);
         parseGET(keyword);
         parseNOTIFY(keyword);
         parseCONNECT(keyword);
+    }
+
+    public Command(String command) {
+        String[] parsedCommand = command.split(" ");
+        parse(parsedCommand[0], Arrays.copyOfRange(parsedCommand, 1, parsedCommand.length));
+    }
+
+    public Command(String keyword, String ...args) {
+        parse(keyword, args);
     }
 
     public boolean typeCheck(String... types) {
