@@ -31,7 +31,7 @@ public class Client {
             }
             Command command = new Command(cmd);
 
-            if (command.getCommandType().equals(Command.SET_TYPE) || command.getCommandType().equals(Command.GET_TYPE)) {
+            if (command.isCommandType(Command.SET_TYPE, Command.GET_TYPE)) {
                 log.info(command.toString(), "command accepted for processing");
 
                 requester.send(command.toString(), 0);
@@ -66,8 +66,11 @@ class Command {
         return intPattern.matcher(s).find();
     }
 
-    public boolean isCommandType(String commandType) {
-        return commandType.equals(this.commandType);
+    public boolean isCommandType(String... commandTypes) {
+        for (String commandType : commandTypes) {
+            if (commandType.equals(this.commandType)) return true;
+        }
+        return false;
     }
 
     private void parseSET(String cmd) {
@@ -136,7 +139,7 @@ class Command {
         for (String arg : args) {
             sb.append(arg).append(", ");
         }
-        sb.delete(sb.length() -2, sb.length());
+        sb.delete(sb.length() - 2, sb.length());
         return sb.toString();
     }
 }
