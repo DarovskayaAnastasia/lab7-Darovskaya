@@ -16,7 +16,7 @@ public class DistCacheStorage {
     public static void main(String[] args) {
         Logger log = new Logger("(DistCacheStorage message)");
         if (args.length < 2) {
-            System.err.println("(DistCacheStorage message): ERROR, incorrect number of arguments");
+            log.err("incorrect number of arguments");
             return;
         }
 
@@ -47,7 +47,7 @@ public class DistCacheStorage {
                 System.out.println("(DistCacheStorage message): command type is " + command.getCommandType());
 
                 if (command.getCommandType().equals(Command.GET_TYPE)) {
-                    String value = storage.get(command.getKey());
+                   // String value = storage.get(command.getKey());
 
                     message.getLast().reset("RESPONSE");
                     message.send(socket);
