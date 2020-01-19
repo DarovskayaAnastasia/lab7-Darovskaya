@@ -79,9 +79,7 @@ class Command {
                 commandType = GET_TYPE;
                 key = Integer.parseInt(parsedCommand[1]);
             }
-        } else if (keyword.equals("QUIT")) {
-            commandType = QUIT_TYPE;
-        }
+        } 
     }
 
     public String getCommandType() {
