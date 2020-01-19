@@ -22,8 +22,6 @@ public class ProxyServer {
     private static boolean sendRequest(Command command, ZMsg message) {
         int key = command.getKey();
 
-//        for (Map.Entry<String, StorageInfo> record : storages.entrySet()) {
-//            StorageInfo info = record.getValue();
         for (StorageInfo info : storages) {
             if (info.getStart() <= key && key <= info.getEnd()) {
                 info.getAddress().send(backend, ZFrame.REUSE + ZFrame.MORE);
@@ -66,10 +64,15 @@ public class ProxyServer {
                 ZMsg message = ZMsg.recvMsg(frontend);
                 Command command = new Command(message.getLast().toString());
 
-                if (command.typeCheck(Command.GET_TYPE)) {
+                if (command.typeCheck(Command.GET_TYPE, Command.SET_TYPE)) {
                     if (!sendRequest(command, message)) {
+                        log.warn("Out of bounds cache");
                         message.getLast().reset("Out of bounds cache");
                         message.send(frontend);
+                    }
+
+                    if (command.typeCheck(Command.GET_TYPE)){
+
                     }
                 }
 
