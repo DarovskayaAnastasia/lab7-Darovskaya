@@ -5,13 +5,13 @@ public class Logger {
         this.prefix = prefix + ":";
     }
 
-    public void withPrefix(String prefix, String... strs){
+    public void withPrefix(String prefix, Object... objs){
         StringBuilder sb = new StringBuilder(this.prefix);
         if(!prefix.equals("")){
             sb.append(" ").append(prefix).append(":");
         }
-        for (String str : strs) {
-            sb.append(" ").append(str);
+        for (Object o : objs) {
+            sb.append(" ").append(o);
         }
 
         System.out.println(sb.toString());
@@ -21,15 +21,15 @@ public class Logger {
 //        withPrefix("", strs);
 //    }
 
-    public void err(String... strs) {
+    public void err(Object... strs) {
         withPrefix("ERROR", strs);
     }
 
-    public void info(String... strs) {
+    public void info(Object... strs) {
         withPrefix("INFO", strs);
     }
 
-    public void warn(String... strs) {
+    public void warn(Object... strs) {
         withPrefix("WARN", strs);
     }
 }
