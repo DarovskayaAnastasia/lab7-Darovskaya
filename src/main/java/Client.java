@@ -66,7 +66,7 @@ class Command {
         return intPattern.matcher(s).find();
     }
 
-    private boolean isCommandType(String commandType) {
+    public boolean isCommandType(String commandType) {
         return commandType.equals(this.commandType);
     }
 
@@ -100,10 +100,6 @@ class Command {
         parseGET(keyword);
         parseNOTIFY(keyword);
         parseCONNECT(keyword);
-    }
-
-    public String getCommandType() {
-        return commandType;
     }
 
     private boolean typeCheck(String... types) {
