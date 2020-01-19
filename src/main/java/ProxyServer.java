@@ -76,19 +76,6 @@ public class ProxyServer {
                         message.send(frontend);
                     }
                 }
-
-                if (command.typeCheck(Command.SET_TYPE)) {
-                    if (!sendRequest(command, message)) {
-                        log.warn("Out of bounds cache");
-                    }
-
-                    ZMsg responseMessage = new ZMsg();
-                    responseMessage.add(new ZFrame("DATA recorded"));
-                    responseMessage.wrap(message.getFirst());
-                    responseMessage.send(frontend);
-                    log.info("SET is done");
-
-                }
             }
 
             if (poller.pollin(BACKEND_INDEX)) {
