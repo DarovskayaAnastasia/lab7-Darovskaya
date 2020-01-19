@@ -25,9 +25,9 @@ public class DistCacheStorage {
 
 //        endless loop
         while (!Thread.currentThread().isInterrupted()) {
-            if ( /* heartbeat checkout*/) {
-                // send heartbeat
-            }
+//            if ( /* heartbeat checkout*/) {
+//                // send heartbeat
+//            }
 
 
             ZMsg message = ZMsg.recvMsg(socket, false);
