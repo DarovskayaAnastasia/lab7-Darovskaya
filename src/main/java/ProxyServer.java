@@ -70,9 +70,7 @@ public class ProxyServer {
                         log.warn("Out of bounds cache");
                         message.getLast().reset(new Command(Command.RESPONSE_TYPE, "Out of bounds cache").encode());
                         message.send(frontend);
-                    }
-
-                    if (command.typeCheck(Command.SET_TYPE)) {
+                    } else if (command.typeCheck(Command.SET_TYPE)) {
                         message.getLast().reset(new Command(Command.RESPONSE_TYPE, "DATA recorded").encode());
                         message.send(frontend);
                     }
