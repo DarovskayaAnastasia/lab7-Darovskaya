@@ -91,7 +91,7 @@ class Command {
     }
 
     private void parseRESPONSE(String cmd) {
-        if (cmd.equals(RESPONSE_TYPE) && args.length == 1)
+        if (cmd.equals(RESPONSE_TYPE))
             commandType = RESPONSE_TYPE;
     }
 
@@ -102,6 +102,7 @@ class Command {
         parseGET(keyword);
         parseNOTIFY(keyword);
         parseCONNECT(keyword);
+        parseRESPONSE(keyword);
     }
 
     public Command(String command) {
