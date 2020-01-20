@@ -34,7 +34,7 @@ public class StorageInfo {
     }
 
     public boolean isDead() {
-        return timer + StorageInfo.HEARTBEAT_TIMEOUT < System.currentTimeMillis();
+        return timer + DistCacheStorage.HEARTBEAT_TIMEOUT < System.currentTimeMillis();
     }
 }
 
