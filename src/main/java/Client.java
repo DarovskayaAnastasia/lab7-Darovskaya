@@ -38,7 +38,7 @@ public class Client {
                 String raw = requester.recvStr(0);
                 Command response = new Command(raw);
                 if (response.typeCheck(Command.RESPONSE_TYPE))
-                    log.info("response:", response);
+                    log.info("response:", response.getResponse());
                 else
                     log.warn("incorrect response:", raw);
 
@@ -151,7 +151,12 @@ class Command {
     }
 
     public String getResponse() {
-        return args[0];
+        StringBuilder sb = new StringBuilder();
+        for (String arg : args) {
+            sb.append(arg).append(" ");
+        }
+        sb.delete(sb.length() - 1, sb.length());
+        return sb.toString();
     }
 
 
