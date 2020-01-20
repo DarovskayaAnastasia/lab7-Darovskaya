@@ -67,7 +67,6 @@ class Command {
         for (int i = 0; i < args.length; i++) {
             strs[i] = args[i].toString();
         }
-        System.out.println(keyword + Arrays.toString(args));
         parse(keyword, strs);
     }
 
