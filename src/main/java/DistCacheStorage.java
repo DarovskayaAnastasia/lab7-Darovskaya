@@ -22,7 +22,7 @@ public class DistCacheStorage {
 
         int startCell = Integer.parseInt(args[0]);
         int endCell = Integer.parseInt(args[1]);
-        Map<Integer, Integer> storage = new HashMap<>();
+        Map<Integer, String> storage = new HashMap<>();
 
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket socket = context.socket(SocketType.DEALER);
