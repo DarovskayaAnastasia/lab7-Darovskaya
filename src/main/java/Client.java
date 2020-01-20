@@ -37,8 +37,8 @@ public class Client {
                 requester.send(command.encode(), 0);
                 String raw = requester.recvStr(0);
                 Command response = new Command(raw);
-                if(response.typeCheck(Command.RESPONSE_TYPE))
-                log.info("response:", response);
+                if (response.typeCheck(Command.RESPONSE_TYPE))
+                    log.info("response:", response);
                 else
                     log.warn("incorrect response:", raw);
 
@@ -118,7 +118,7 @@ class Command {
         for (int i = 0; i < args.length; i++) {
             strs[i] = args[i].toString();
         }
-        System.out.println(keyword+ Arrays.toString(args));
+        System.out.println(keyword + Arrays.toString(args));
         parse(keyword, strs);
     }
 
