@@ -35,9 +35,12 @@ public class Client {
                 log.info(command, "command accepted for processing");
 
                 requester.send(command.encode(), 0);
-                String response = requester.recvStr(0);
-
+                String raw = requester.recvStr(0);
+                Command response = new Command(raw);
+                if(response.typeCheck(Command.RESPONSE_TYPE))
                 log.info("response:", response);
+                else
+                    log.warn("incorrect response:", raw);
 
             } else {
                 log.info("incorrect command");
