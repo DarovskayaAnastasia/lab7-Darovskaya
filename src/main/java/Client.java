@@ -146,6 +146,10 @@ class Command {
         return Integer.parseInt(args[1]);
     }
 
+    public String getResponse() {
+        return args[0];
+    }
+
 
     @Override
     public String toString() {
