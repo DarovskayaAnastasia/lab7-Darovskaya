@@ -37,7 +37,7 @@ public class DistCacheStorage {
 
 //        endless loop
         while (!Thread.currentThread().isInterrupted()) {
-            if ( /* heartbeat checkout*/) {
+            if (System.currentTimeMillis() >= heartbeatTime) {
                 socket.send(new Command(Command.NOTIFY_TYPE, startCell, endCell).encode(), 0);
             }
 
