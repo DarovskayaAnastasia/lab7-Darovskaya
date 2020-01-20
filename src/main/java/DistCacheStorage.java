@@ -46,17 +46,17 @@ public class DistCacheStorage {
 
             if (message != null) {
                 Command command = new Command((message.getLast().toString()));
-                log.info("command is", command);
+                log.info("received command ", command);
 
                 if (command.typeCheck(Command.GET_TYPE)) {
                     String value = storage.get(command.getKey());
 
-                    message.getLast().reset("RESPONSE");
+                    message.getLast().reset(new Command(Command.RESPONSE_TYPE, value).encode());
                     message.send(socket);
                 }
 
                 if (command.typeCheck(Command.SET_TYPE)) {
-
+                    storage.put(command.getKey(), command.getValue());
                 }
             }
         }
