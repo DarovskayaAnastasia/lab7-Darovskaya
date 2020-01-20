@@ -101,6 +101,10 @@ public class ProxyServer {
                     storages.add(new StorageInfo(id, command.getBegin(), command.getEnd(), System.currentTimeMillis()));
                     log.info("added", id);
                 }
+
+                if (command.typeCheck(Command.RESPONSE_TYPE)) {
+                    
+                }
             }
 
             // storages.removeIf(StorageInfo::isDead);
