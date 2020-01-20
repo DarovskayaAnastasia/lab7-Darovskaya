@@ -73,7 +73,7 @@ public class ProxyServer {
                     }
 
                     if (command.typeCheck(Command.SET_TYPE)) {
-                        message.getLast().reset("DATA recorded");
+                        message.getLast().reset(new Command(Command.RESPONSE_TYPE, "DATA recorded").encode());
                         message.send(frontend);
                     }
                 }
