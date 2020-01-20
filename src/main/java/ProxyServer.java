@@ -59,8 +59,6 @@ public class ProxyServer {
         while (!Thread.currentThread().isInterrupted()) {
             poller.poll();
 
-//          here we'll remove idle storages
-
             if (poller.pollin(FRONTEND_INDEX)) {
                 ZMsg message = ZMsg.recvMsg(frontend);
                 Command command = new Command(message.getLast().toString());
@@ -105,6 +103,8 @@ public class ProxyServer {
                     message.send(frontend);
                 }
             }
+
+//          here we'll remove idle storages
 
             storages.removeIf(StorageInfo::isDead);
         }
