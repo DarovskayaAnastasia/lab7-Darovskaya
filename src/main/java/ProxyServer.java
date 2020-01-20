@@ -103,7 +103,7 @@ public class ProxyServer {
                 }
 
                 if (command.typeCheck(Command.RESPONSE_TYPE)) {
-                    
+                    message.send(frontend);
                 }
             }
 
