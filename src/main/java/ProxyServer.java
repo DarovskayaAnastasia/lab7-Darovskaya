@@ -9,8 +9,8 @@ import java.util.List;
 public class ProxyServer {
     private static final int FRONTEND_INDEX = 0;
     private static final int BACKEND_INDEX = 1;
-    private static final String  FRONTEND_ADDR = "tcp://localhost:5559";
-    private static final String  BACKEND_ADDR =  "tcp://localhost:5560";
+    private static final String FRONTEND_ADDR = "tcp://localhost:5559";
+    private static final String BACKEND_ADDR = "tcp://localhost:5560";
     private static ZMQ.Socket frontend;
     private static ZMQ.Socket backend;
 
