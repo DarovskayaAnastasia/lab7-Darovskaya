@@ -1,6 +1,8 @@
 import org.zeromq.ZFrame;
 
 public class StorageInfo {
+    public static final int HEARTBEAT_TIMEOUT = 3000;
+
     private ZFrame address;
     private int start;
     private int end;
@@ -34,7 +36,7 @@ public class StorageInfo {
     }
 
     public boolean isDead() {
-        return timer + 3000 < System.currentTimeMillis();
+        return timer + HEARTBEAT_TIMEOUT < System.currentTimeMillis();
     }
 }
 

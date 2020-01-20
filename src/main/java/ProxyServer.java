@@ -108,7 +108,6 @@ public class ProxyServer {
             }
 
             storages.removeIf(StorageInfo::isDead);
-
         }
 
 //        We never get here but clean up anyhow
