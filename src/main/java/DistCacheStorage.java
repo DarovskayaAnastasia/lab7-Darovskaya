@@ -13,8 +13,10 @@ public class DistCacheStorage {
     private static int end;
     private static Map<Integer, String> storage = new HashMap<>();
 
+    private final static Logger log = new Logger("(DistCacheStorage message)");
+
+
     public static void main(String[] args) {
-        Logger log = new Logger("(DistCacheStorage message)");
         if (args.length < 2) {
             log.err("incorrect number of arguments");
             return;
@@ -27,7 +29,7 @@ public class DistCacheStorage {
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket socket = context.socket(SocketType.DEALER);
         socket.connect(STORAGE_ADDRESS);
-        log.info("Storage connected to", STORAGE_ADDRESS);
+        log.info("Storage connected to", STORAGE_ADDRESS, "with cache in range", startCell, endCell);
 
         long heartbeatTime = System.currentTimeMillis() + HEARTBEAT_TIMEOUT;
 
@@ -40,6 +42,7 @@ public class DistCacheStorage {
             if (System.currentTimeMillis() >= heartbeatTime) {
                 heartbeatTime = System.currentTimeMillis() + HEARTBEAT_TIMEOUT / 2;
                 socket.send(new Command(Command.NOTIFY_TYPE, startCell, endCell).encode(), 0);
+                log.info("heartbeat sent");
             }
 
 
